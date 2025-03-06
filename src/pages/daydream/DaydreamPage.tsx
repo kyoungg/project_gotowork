@@ -1,5 +1,11 @@
+import Daydream from "../../components/Daydream";
+
 const DaydreamPage = () => {
-  return <>백일몽 임직원몰 페이지</>;
+  return (
+    <>
+      <Daydream isLogin={false} />
+    </>
+  );
 };
 
 export default DaydreamPage;

@@ -28,6 +28,7 @@ const router = createBrowserRouter([
       },
     ],
   },
+  { path: "/daydrem", element: <Layout />, errorElement: <a>im error!</a> },
 ]);
 
 export default function App() {
