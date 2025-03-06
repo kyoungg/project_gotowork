@@ -61,10 +61,8 @@ const Background = styled.div`
 
   background-color: #d4d0c8;
 
-  width: 1022px;
-  height: 706px;
-
-  border: solid #acacac 1px;
+  width: 1024px;
+  height: 708px;
 `;
 
 const TopContainer = styled.div`

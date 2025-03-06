@@ -8,7 +8,7 @@ const data = [
     price: 500,
   },
   {
-    name: "◼◼ 냉장고고",
+    name: "◼◼ 냉장고",
     price: 500,
   },
   {
