@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { useEffect, useState } from "react";
 
 import shopData from "../../assets/data/spaceshop";
+import { useNavigate } from "react-router-dom";
 
 interface ProductType {
   id: string;
@@ -13,6 +14,8 @@ interface ProductType {
 const SpaceList = () => {
   const [payList, setPayList] = useState<ProductType[]>([]);
   const [totalPrice, setTotalPrice] = useState(0);
+
+  const navigation = useNavigate();
 
   useEffect(() => {
     const total = payList.reduce((acc, item) => acc + item.price, 0);
@@ -29,6 +32,13 @@ const SpaceList = () => {
 
   const handleRemoveFromCart = (id: string) => {
     setPayList((prev) => prev.filter((item) => item.id !== id));
+  };
+
+  const handleSubmit = () => {
+    if (payList.find((item) => item.id === "article04")) {
+      localStorage.setItem("weHelp", "change");
+    }
+    return navigation("/spaceshop/delivery");
   };
 
   return (
@@ -83,7 +93,7 @@ const SpaceList = () => {
               </DiscountPrice>
             )}
           </Price>
-          <PayBtn>물건 산다</PayBtn>
+          <PayBtn onClick={handleSubmit}>물건 산다</PayBtn>
         </Bottom>
       </Container>
     </Background>
