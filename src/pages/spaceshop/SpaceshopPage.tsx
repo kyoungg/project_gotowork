@@ -1,8 +1,5 @@
-import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
-
 import Spaceshop from "../../components/spaceshop/Spaceshop";
-import Main from "../../components/spaceshop/main";
+import Main from "../../components/spaceshop/Main";
 
 const SpaceshopPage = () => {
   return (

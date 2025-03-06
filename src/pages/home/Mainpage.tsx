@@ -5,6 +5,7 @@ import data from "../../assets/data/icon";
 
 const MainPage = () => {
   const navigation = useNavigate();
+  const weHelp = localStorage.getItem("weHelp");
 
   return (
     <Background>
@@ -20,6 +21,12 @@ const MainPage = () => {
             </Icon>
           );
         })}
+        {weHelp && (
+          <Icon>
+            <Img src={"./public/redbutton.png"} />
+            <Name>{"우리가 도움!"}</Name>
+          </Icon>
+        )}
       </ul>
     </Background>
   );
