@@ -1,30 +1,18 @@
 import styled from "styled-components";
 
+import data from "../../assets/data/icon";
+
 const MainPage = () => {
   return (
     <Background>
-      <Icon>
-        <Img src="./public/빈창.png" />
-        <p>휴지통</p>
-      </Icon>
-      <Icon>
-        <Img src="./public/내컴퓨터.png" />
-        <p>내 컴퓨터</p>
-      </Icon>
-      <Icon>
-        <Img src="./public/쇼핑몰.png" />
-        <p>임직원</p>
-        <p>복지몰</p>
-      </Icon>
-      <Icon>
-        <Img src="./public/말풍선.png" />
-        <p>메신저</p>
-      </Icon>
-      <Icon>
-        <Img src="./public/메모.png" />
-        <p>&#91;이자헌</p>
-        <p>조-...</p>
-      </Icon>
+      {data.map((icon) => {
+        return (
+          <Icon>
+            <Img src={icon.img} />
+            <Name>{icon.name}</Name>
+          </Icon>
+        );
+      })}
     </Background>
   );
 };
@@ -43,10 +31,6 @@ const Icon = styled.div`
   flex-direction: column;
   align-items: center;
 
-  color: white;
-  font-size: 16px;
-  align-content: center;
-
   width: 80px;
   padding: 5px;
 `;
@@ -54,4 +38,16 @@ const Icon = styled.div`
 const Img = styled.img`
   height: 60px;
   width: 60px;
+`;
+
+const Name = styled.div`
+  display: flex;
+  flex-direction: column-reverse;
+
+  font-size: 16px;
+  color: white;
+
+  text-align: center;
+
+  width: 100%;
 `;
