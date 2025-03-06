@@ -8,7 +8,10 @@ const MainPage = lazy(() => import("./pages/home/Mainpage"));
 const DaydreamPage = lazy(() => import("./pages/daydream/DaydreamPage"));
 const DaydreamPointPage = lazy(() => import("./pages/daydream/PointPage"));
 const DaydreamShopPage = lazy(() => import("./pages/daydream/ShopPage"));
-const SpaceshopPage = lazy(() => import("./pages/spaceshop/SpaceshopPage"));
+const SpaceShopPage = lazy(() => import("./pages/spaceshop/SpaceshopPage"));
+const SpaceShopPayPage = lazy(
+  () => import("./pages/spaceshop/SpaceshopPayPage")
+);
 
 const router = createBrowserRouter([
   {
@@ -28,8 +31,9 @@ const router = createBrowserRouter([
       { path: "daydream/shop", element: <DaydreamShopPage /> },
       {
         path: "spaceshop",
-        element: <SpaceshopPage />,
+        element: <SpaceShopPage />,
       },
+      { path: "spaceshop/pay", element: <SpaceShopPayPage /> },
     ],
   },
 ]);
