@@ -5,6 +5,7 @@ import { AiOutlineArrowLeft } from "react-icons/ai";
 import { BiDotsVerticalRounded } from "react-icons/bi";
 import { IoMdRefresh } from "react-icons/io";
 import Profile from "./Profile";
+import { useState } from "react";
 
 interface DaydreamProps {
   component?: React.ReactNode; // React 컴포넌트 노드
@@ -12,6 +13,8 @@ interface DaydreamProps {
 }
 
 const Daydream: React.FC<DaydreamProps> = ({ component, isLogin }) => {
+  const [count, setCount] = useState(1);
+
   const navigation = useNavigate();
   const pathname = window.location.pathname;
 
@@ -32,7 +35,14 @@ const Daydream: React.FC<DaydreamProps> = ({ component, isLogin }) => {
       </TopContainer>
       <MiddleContainer>
         <AiOutlineArrowLeft size="36" onClick={() => navigation(-1)} />
-        <AiOutlineArrowRight size="36" color="#898989" />
+        <AiOutlineArrowRight
+          size="36"
+          color="#898989"
+          onClick={() => {
+            setCount(count + 1);
+            console.log(count);
+          }}
+        />
         <IoMdRefresh
           size="36"
           onClick={() => {
@@ -47,6 +57,19 @@ const Daydream: React.FC<DaydreamProps> = ({ component, isLogin }) => {
       <BottomContainer>
         {isLogin && <Profile />}
         {component}
+        {count % 6 == 0 && (
+          <GotoSpace>
+            <Pngwing>
+              <SpaceImg src="./public/pngwing.png" />
+              <SpaceText onClick={() => navigation("/spaceshop")}>
+                <p>{`1주년 감사 할인중! ~80%`}</p>
+                <p>{`직장이 지루한가요? >>클릭`}</p>
+                <p>{`멋진 물건을 가지고 싶나요? >>클릭`}</p>
+              </SpaceText>
+            </Pngwing>
+            <Spacehand src="./public/hand.gif" />
+          </GotoSpace>
+        )}
       </BottomContainer>
     </Background>
   );
@@ -143,4 +166,35 @@ const BottomContainer = styled.div`
   height: 86%;
 
   border: solid #acacac 1px;
+`;
+
+const GotoSpace = styled.div`
+  padding-top: 190px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+`;
+
+const SpaceImg = styled.img`
+  width: 210px;
+  height: 140px;
+  padding-right: 70px;
+`;
+
+const Spacehand = styled.img`
+  width: 82px;
+  height: 82px;
+`;
+
+const Pngwing = styled.div`
+  position: relative;
+  cursor: pointer;
+`;
+
+const SpaceText = styled.div`
+  position: absolute;
+  text-align: center;
+  font-size: 12px;
+
+  top: 35px;
 `;

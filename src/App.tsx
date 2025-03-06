@@ -7,7 +7,7 @@ import Layout from "./Layout";
 const MainPage = lazy(() => import("./pages/home/Mainpage"));
 const DaydreamPage = lazy(() => import("./pages/daydream/DaydreamPage"));
 const DaydreamPointPage = lazy(() => import("./pages/daydream/PointPage"));
-const DaydreamShopPage = lazy(() => import("./pages/daydream/shopPage"));
+const DaydreamShopPage = lazy(() => import("./pages/daydream/ShopPage"));
 const SpaceshopPage = lazy(() => import("./pages/spaceshop/SpaceshopPage"));
 
 const router = createBrowserRouter([
