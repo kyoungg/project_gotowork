@@ -1,9 +1,10 @@
+import SpaceList from "../../components/spaceshop/SpaceList";
 import Spaceshop from "../../components/spaceshop/Spaceshop";
 
 const SpaceShopPayPage = () => {
   return (
     <>
-      <Spaceshop />
+      <Spaceshop component={<SpaceList />} />
     </>
   );
 };

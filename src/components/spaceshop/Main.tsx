@@ -44,7 +44,7 @@ const Title = styled.div`
 
   font-size: 64px;
   color: #44ff00;
-  padding-top: 40%;
+  padding-top: 47%;
 `;
 
 const Text = styled.div`

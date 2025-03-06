@@ -40,7 +40,7 @@ const Spaceshop: React.FC<SpaceshopProps> = ({ component }) => {
         <Url>
           <p>
             htps://www.spaceshop.com{pathname}
-            we-are?who=gerong&thief?mask=capreolus-pygargus
+            /we-are?who=gerong&thief?mask=capreolus-pygargus
           </p>
         </Url>
         <BiDotsVerticalRounded size="36" />
