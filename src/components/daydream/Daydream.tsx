@@ -31,7 +31,7 @@ const Daydream: React.FC<DaydreamProps> = ({ component, isLogin }) => {
         </CloseBtn>
       </TopContainer>
       <MiddleContainer>
-        <AiOutlineArrowLeft size="36" />
+        <AiOutlineArrowLeft size="36" onClick={() => navigation(-1)} />
         <AiOutlineArrowRight size="36" color="#898989" />
         <IoMdRefresh
           size="36"

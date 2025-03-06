@@ -1,9 +1,10 @@
-import Daydream from "../../components/Daydream";
+import Daydream from "../../components/daydream/Daydream";
+import Nav from "../../components/daydream/Nav";
 
 const DaydreamPage = () => {
   return (
     <>
-      <Daydream isLogin={false} />
+      <Daydream isLogin={true} component={<Nav />} />
     </>
   );
 };
