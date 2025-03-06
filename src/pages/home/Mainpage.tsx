@@ -7,7 +7,7 @@ const MainPage = () => {
     <Background>
       {data.map((icon) => {
         return (
-          <Icon>
+          <Icon key={icon.id}>
             <Img src={icon.img} />
             <Name>{icon.name}</Name>
           </Icon>
