@@ -1,18 +1,26 @@
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 import data from "../../assets/data/icon";
 
 const MainPage = () => {
+  const navigation = useNavigate();
+
   return (
     <Background>
-      {data.map((icon) => {
-        return (
-          <Icon key={icon.id}>
-            <Img src={icon.img} />
-            <Name>{icon.name}</Name>
-          </Icon>
-        );
-      })}
+      <ul>
+        {data.map((icon) => {
+          return (
+            <Icon
+              key={icon.id}
+              onClick={() => !icon.isModal && navigation(icon.path)}
+            >
+              <Img src={icon.img} />
+              <Name>{icon.name}</Name>
+            </Icon>
+          );
+        })}
+      </ul>
     </Background>
   );
 };
@@ -26,7 +34,7 @@ const Background = styled.div`
   height: 708px;
 `;
 
-const Icon = styled.div`
+const Icon = styled.li`
   display: flex;
   flex-direction: column;
   align-items: center;
