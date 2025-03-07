@@ -9,7 +9,7 @@ const Footer = () => {
   return (
     <Background>
       <StartBtn>
-        <Img src="./public/windowslogo.png" />
+        <Img src="/images/windowslogo.png" />
         시작
       </StartBtn>
       <MenuContainer>

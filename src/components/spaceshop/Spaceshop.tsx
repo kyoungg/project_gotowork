@@ -17,7 +17,7 @@ const Spaceshop: React.FC<SpaceshopProps> = ({ component }) => {
     <Background>
       <TopContainer>
         <Title>
-          <Img src="./public/alien.png" />
+          <Img src="/images/alien.png" />
           우주 쇼핑몰
         </Title>
         <CloseBtn

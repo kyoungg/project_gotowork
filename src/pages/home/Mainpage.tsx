@@ -23,7 +23,7 @@ const MainPage = () => {
         })}
         {weHelp && (
           <Icon>
-            <Img src={"./public/redbutton.png"} />
+            <Img src={"/images/redbutton.png"} />
             <Name>{"우리가 도움!"}</Name>
           </Icon>
         )}

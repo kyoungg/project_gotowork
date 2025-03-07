@@ -22,7 +22,7 @@ const Daydream: React.FC<DaydreamProps> = ({ component, isLogin }) => {
     <Background>
       <TopContainer>
         <Title>
-          <Img src="./public/쇼핑몰.png" />
+          <Img src="/images/쇼핑몰.png" />
           백일몽주식회사 임직원복지몰
         </Title>
         <CloseBtn
@@ -60,14 +60,14 @@ const Daydream: React.FC<DaydreamProps> = ({ component, isLogin }) => {
         {count % 6 == 0 && (
           <GotoSpace>
             <Pngwing>
-              <SpaceImg src="./public/pngwing.png" />
+              <SpaceImg src="/images/pngwing.png" />
               <SpaceText onClick={() => navigation("/spaceshop")}>
                 <p>{`1주년 감사 할인중! ~80%`}</p>
                 <p>{`직장이 지루한가요? >>클릭`}</p>
                 <p>{`멋진 물건을 가지고 싶나요? >>클릭`}</p>
               </SpaceText>
             </Pngwing>
-            <Spacehand src="./public/hand.gif" />
+            <Spacehand src="/images/hand.gif" />
           </GotoSpace>
         )}
       </BottomContainer>

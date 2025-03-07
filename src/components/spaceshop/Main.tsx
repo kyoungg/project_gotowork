@@ -21,7 +21,7 @@ const Main = () => {
           {">>나는 물건을 본다"}
         </Link>
       </Text>
-      <Ufo src="./public/ufo.png" />
+      <Ufo src="/images/ufo.png" />
     </Background>
   );
 };
