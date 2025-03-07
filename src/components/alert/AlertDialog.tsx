@@ -1,17 +1,17 @@
 import { useState } from "react";
-import Confirm from "./Confirm";
-import ConfirmContext from "./confirmContext";
+import Alert from "./Alert";
+import AlertContext from "./alertContext";
 
-type ConfirmState = {
+type AlertState = {
   message: string;
   onClickOK: () => void;
   onClickCancel: () => void;
 };
 
-const ConfirmDialog = ({ children }: { children: React.ReactNode }) => {
-  const [state, setState] = useState<ConfirmState>();
+const AlertDialog = ({ children }: { children: React.ReactNode }) => {
+  const [state, setState] = useState<AlertState>();
 
-  const confirm = (message?: string): Promise<boolean> => {
+  const alert = (message?: string): Promise<boolean> => {
     return new Promise((resolve) => {
       setState({
         message: message ?? "",
@@ -28,17 +28,17 @@ const ConfirmDialog = ({ children }: { children: React.ReactNode }) => {
   };
 
   return (
-    <ConfirmContext.Provider value={{ confirm }}>
+    <AlertContext.Provider value={{ alert }}>
       {children}
       {state && (
-        <Confirm
+        <Alert
           message={state.message}
           onClickOK={state.onClickOK}
           onClickCancel={state.onClickCancel}
         />
       )}
-    </ConfirmContext.Provider>
+    </AlertContext.Provider>
   );
 };
 
-export default ConfirmDialog;
+export default AlertDialog;

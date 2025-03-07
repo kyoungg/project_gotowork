@@ -3,14 +3,14 @@ const data = [
     id: "icon01",
     name: "휴지통",
     img: "images/빈창.png",
-    path: "/trash",
+    path: "modal",
     isModal: true,
   },
   {
     id: "icon02",
     name: "내 컴퓨터",
     img: "images/내컴퓨터.png",
-    path: "/mycomputer",
+    path: "modal",
     isModal: true,
   },
   {
@@ -25,13 +25,13 @@ const data = [
     name: "메신저",
     img: "images/말풍선.png",
     path: "/messenger",
-    isModal: false,
+    isModal: true,
   },
   {
     id: "icon05",
     name: "[이자헌 조-...",
     img: "images/메모.png",
-    path: "/memo",
+    path: "modal",
     isModal: true,
   },
 ];

@@ -6,7 +6,7 @@ interface Props {
   onClickCancel: () => void;
 }
 
-const Confirm = ({ message, onClickOK, onClickCancel }: Props) => {
+const Alert = ({ message, onClickOK, onClickCancel }: Props) => {
   return (
     <Container>
       <TopContainer>
@@ -20,14 +20,13 @@ const Confirm = ({ message, onClickOK, onClickCancel }: Props) => {
         <Text>{message}</Text>
         <BtnContainer>
           <Btn onClick={onClickOK}>확인</Btn>
-          <Btn onClick={onClickCancel}>취소</Btn>
         </BtnContainer>
       </BottomContainer>
     </Container>
   );
 };
 
-export default Confirm;
+export default Alert;
 
 const Container = styled.div`
   position: absolute;
