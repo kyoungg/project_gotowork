@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
 import data from "../../assets/data/icon";
+import Confirm from "../../components/Confirm";
 
 const MainPage = () => {
   const navigation = useNavigate();
@@ -28,6 +29,7 @@ const MainPage = () => {
           </Icon>
         )}
       </ul>
+      <Confirm message="아임 에러" type="error" title="오류" />
     </Background>
   );
 };
