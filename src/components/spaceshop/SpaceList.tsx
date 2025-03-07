@@ -15,7 +15,7 @@ const SpaceList = () => {
   const [payList, setPayList] = useState<ProductType[]>([]);
   const [totalPrice, setTotalPrice] = useState(0);
 
-  const navigation = useNavigate();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const total = payList.reduce((acc, item) => acc + item.price, 0);
@@ -38,7 +38,7 @@ const SpaceList = () => {
     if (payList.find((item) => item.id === "article04")) {
       localStorage.setItem("weHelp", "change");
     }
-    return navigation("/spaceshop/delivery");
+    return navigate("/spaceshop/delivery");
   };
 
   return (

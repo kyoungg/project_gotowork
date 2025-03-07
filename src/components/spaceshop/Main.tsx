@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 
 const Main = () => {
-  const navigation = useNavigate();
+  const navigate = useNavigate();
 
   return (
     <Background>
@@ -15,7 +15,7 @@ const Main = () => {
         <Detaile>※외계에서 온 멋진 물건※~!!</Detaile>
         <Link
           onClick={() => {
-            navigation("/spaceshop/pay");
+            navigate("/spaceshop/pay");
           }}
         >
           {">>나는 물건을 본다"}

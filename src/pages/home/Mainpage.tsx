@@ -1,14 +1,13 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
 
 import data from "../../assets/data/icon";
-
-import { useContext } from "react";
 import ConfirmContext from "../../components/confirm/confirmContext";
 import AlertContext from "../../components/alert/alertContext";
 
 const MainPage = () => {
-  const navigation = useNavigate();
+  const navigate = useNavigate();
   const weHelp = localStorage.getItem("weHelp");
 
   const { confirm: confirmComp } = useContext(ConfirmContext);
@@ -21,6 +20,11 @@ const MainPage = () => {
 
   const onRealhelpClick = async () => {
     const result = await confirmComp(`정말?`);
+    return result == true && onRealRealhelpClick();
+  };
+
+  const onRealRealhelpClick = async () => {
+    const result = await confirmComp(`진짜로?`);
     return result == true && onDontClick();
   };
 
@@ -40,7 +44,7 @@ const MainPage = () => {
             <Icon
               key={icon.id}
               onClick={() =>
-                icon.isModal ? onNothingClick() : navigation(icon.path)
+                icon.isModal ? onNothingClick() : navigate(icon.path)
               }
             >
               <Img src={icon.img} />

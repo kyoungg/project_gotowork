@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import styled from "styled-components";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoIosArrowUp } from "react-icons/io";
@@ -6,6 +6,7 @@ import { GiHelp } from "react-icons/gi";
 
 import rankData from "../../assets/data/rank";
 import Ranklist from "./Ranklist";
+import AlertContext from "../alert/alertContext";
 
 const Point = () => {
   const [view, setView] = useState(false);
@@ -13,6 +14,12 @@ const Point = () => {
   const [rank, setRank] = useState("F 등급");
   const [name, setName] = useState("");
   const [file, setFile] = useState("");
+
+  const { alert: alertComp } = useContext(AlertContext);
+
+  const onSubmitClick = async () => {
+    await alertComp(`이건 내 계정이 아니다...`);
+  };
 
   return (
     <Container>
@@ -73,7 +80,13 @@ const Point = () => {
           }}
         />
       </InputContainer>
-      <UploadBtn>제출</UploadBtn>
+      <UploadBtn
+        onClick={() => {
+          onSubmitClick();
+        }}
+      >
+        제출
+      </UploadBtn>
     </Container>
   );
 };
@@ -175,9 +188,13 @@ const UploadBtn = styled.button`
 
   font-size: 21px;
   color: white;
+
+  cursor: pointer;
 `;
 
 const HelpBtn = styled.div`
   padding-left: 35%;
   padding-bottom: 2px;
+
+  cursor: pointer;
 `;

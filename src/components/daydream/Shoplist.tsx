@@ -10,7 +10,7 @@ const Shoplist = () => {
       <Ul>
         {data.map((product) => {
           return (
-            <Li>
+            <Li key={product.name + product.price}>
               - {product.name} : {product.price} p
             </Li>
           );

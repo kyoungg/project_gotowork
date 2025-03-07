@@ -10,7 +10,7 @@ interface SpaceshopProps {
 }
 
 const Spaceshop: React.FC<SpaceshopProps> = ({ component }) => {
-  const navigation = useNavigate();
+  const navigate = useNavigate();
   const pathname = window.location.pathname;
 
   return (
@@ -22,14 +22,14 @@ const Spaceshop: React.FC<SpaceshopProps> = ({ component }) => {
         </Title>
         <CloseBtn
           onClick={() => {
-            navigation("/");
+            navigate("/");
           }}
         >
           X
         </CloseBtn>
       </TopContainer>
       <MiddleContainer>
-        <AiOutlineArrowLeft size="36" onClick={() => navigation(-1)} />
+        <AiOutlineArrowLeft size="36" onClick={() => navigate(-1)} />
         <AiOutlineArrowRight size="36" color="#898989" />
         <IoMdRefresh
           size="36"
@@ -107,7 +107,7 @@ const CloseBtn = styled.div`
 
   font-size: 35px;
 
-  cursor: default;
+  cursor: pointer;
 `;
 
 const MiddleContainer = styled.div`

@@ -7,11 +7,11 @@ const Delivery = () => {
   const INTERVAL = 1000;
   const [timeLeft, setTimeLeft] = useState<number>(MINUTES_IN_SE);
 
-  const navigation = useNavigate();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (timeLeft <= 0) {
-      navigation("/daydream"); // 타이머가 끝나면 페이지 이동
+      navigate("/daydream"); // 타이머가 끝나면 페이지 이동
       return;
     }
 

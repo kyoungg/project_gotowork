@@ -15,7 +15,7 @@ interface DaydreamProps {
 const Daydream: React.FC<DaydreamProps> = ({ component, isLogin }) => {
   const [count, setCount] = useState(1);
 
-  const navigation = useNavigate();
+  const navigate = useNavigate();
   const pathname = window.location.pathname;
 
   return (
@@ -27,14 +27,14 @@ const Daydream: React.FC<DaydreamProps> = ({ component, isLogin }) => {
         </Title>
         <CloseBtn
           onClick={() => {
-            navigation("/");
+            navigate("/");
           }}
         >
           X
         </CloseBtn>
       </TopContainer>
       <MiddleContainer>
-        <AiOutlineArrowLeft size="36" onClick={() => navigation(-1)} />
+        <AiOutlineArrowLeft size="36" onClick={() => navigate(-1)} />
         <AiOutlineArrowRight
           size="36"
           color="#898989"
@@ -61,7 +61,7 @@ const Daydream: React.FC<DaydreamProps> = ({ component, isLogin }) => {
           <GotoSpace>
             <Pngwing>
               <SpaceImg src="/images/pngwing.png" />
-              <SpaceText onClick={() => navigation("/spaceshop")}>
+              <SpaceText onClick={() => navigate("/spaceshop")}>
                 <p>{`1주년 감사 할인중! ~80%`}</p>
                 <p>{`직장이 지루한가요? >>클릭`}</p>
                 <p>{`멋진 물건을 가지고 싶나요? >>클릭`}</p>
@@ -132,7 +132,7 @@ const CloseBtn = styled.div`
 
   font-size: 35px;
 
-  cursor: default;
+  cursor: pointer;
 `;
 
 const MiddleContainer = styled.div`

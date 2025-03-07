@@ -1,19 +1,26 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-const Login = () => {
-  const navigation = useNavigate();
+import AlertContext from "../../components/alert/alertContext";
 
+const Login = () => {
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
 
+  const navigate = useNavigate();
+  const { alert: alertComp } = useContext(AlertContext);
+
+  const onFail = async () => {
+    alertComp(`로그인 실패!`);
+  };
+
   const handleSubmit = () => {
-    if (id == "yongj1111" && password == "Dydajflgodks!111") {
-      alert("성공");
+    if (id === "yongj1111" && password === "Dydajflgodks!111") {
       localStorage.setItem("token", "gerong");
-      navigation("/daydream");
-    } else alert("실패");
+      navigate("/daydream");
+      window.location.reload();
+    } else onFail();
   };
 
   return (
@@ -88,4 +95,6 @@ const UploadBtn = styled.button`
 
   font-size: 21px;
   color: white;
+
+  cursor: pointer;
 `;
