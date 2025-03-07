@@ -2,38 +2,24 @@ import styled from "styled-components";
 
 interface Props {
   message: string;
-  type: "error" | "warning";
-  isAlert?: boolean;
-  title: string;
-  onClickOK?: () => void;
-  onClickCancel?: () => void;
+  onClickOK: () => void;
+  onClickCancel: () => void;
 }
 
-const Confirm = ({
-  message,
-  type,
-  title,
-  onClickOK,
-  onClickCancel,
-  isAlert = false,
-}: Props) => {
+const Confirm = ({ message, onClickOK, onClickCancel }: Props) => {
   return (
     <Container>
       <TopContainer>
         <TitleContainer>
-          <Icon
-            src={type == "error" ? "/images/출입불가.png" : "/images/경고.png"}
-          />
-          {title}
+          <Icon src={"/images/경고.png"} />
+          {"시스템 메세지"}
         </TitleContainer>
         <CloseBtn onClick={onClickCancel}>X</CloseBtn>
       </TopContainer>
       <BottomContainer>
         <Text>{message}</Text>
-
         <BtnContainer>
           <Btn onClick={onClickOK}>확인</Btn>
-          {isAlert || <Btn onClick={onClickCancel}>취소</Btn>}
         </BtnContainer>
       </BottomContainer>
     </Container>
@@ -43,6 +29,11 @@ const Confirm = ({
 export default Confirm;
 
 const Container = styled.div`
+  position: absolute;
+
+  top: 10%;
+  right: 30%;
+
   width: 445px;
   height: 230px;
 
@@ -71,6 +62,7 @@ const TopContainer = styled.div`
   height: 30px;
 
   margin-top: 5px;
+  margin-left: 4px;
 
   background: linear-gradient(to right, #254181, 80%, #a3c7ee);
 

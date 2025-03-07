@@ -1,12 +1,13 @@
 import { Outlet } from "react-router-dom";
 import Footer from "./components/Footer";
+import ConfirmDialog from "./components/confirm/ConfirmDialog";
 
 const Layout = () => {
   return (
-    <div>
+    <ConfirmDialog>
       <Outlet />
       <Footer />
-    </div>
+    </ConfirmDialog>
   );
 };
 

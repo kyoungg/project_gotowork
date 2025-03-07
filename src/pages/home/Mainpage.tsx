@@ -2,11 +2,22 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
 import data from "../../assets/data/icon";
-import Confirm from "../../components/Confirm";
+
+import { useContext } from "react";
+import ConfirmContext from "../../components/confirm/ConfirmContext";
 
 const MainPage = () => {
   const navigation = useNavigate();
   const weHelp = localStorage.getItem("weHelp");
+
+  const { confirm: confirmComp } = useContext(ConfirmContext);
+
+  const onConfirmClick = async () => {
+    const result = await confirmComp(
+      "지금 사용하는건 좋은 생각이 아닌 것 같다..."
+    );
+    console.log("custom", result);
+  };
 
   return (
     <Background>
@@ -23,13 +34,16 @@ const MainPage = () => {
           );
         })}
         {weHelp && (
-          <Icon>
+          <Icon
+            onClick={() => {
+              onConfirmClick();
+            }}
+          >
             <Img src={"/images/redbutton.png"} />
             <Name>{"우리가 도움!"}</Name>
           </Icon>
         )}
       </ul>
-      <Confirm message="아임 에러" type="error" title="오류" />
     </Background>
   );
 };
