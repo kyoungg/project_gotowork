@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { useRef } from "react";
+import Draggable from "react-draggable";
 
 interface Props {
   message: string;
@@ -7,22 +9,32 @@ interface Props {
 }
 
 const Alert = ({ message, onClickOK, onClickCancel }: Props) => {
+  const nodeRef = useRef(null);
+
   return (
-    <Container>
-      <TopContainer>
-        <TitleContainer>
-          <Icon src={"/images/경고.png"} />
-          {"시스템 메세지"}
-        </TitleContainer>
-        <CloseBtn onClick={onClickCancel}>X</CloseBtn>
-      </TopContainer>
-      <BottomContainer>
-        <Text>{message}</Text>
-        <BtnContainer>
-          <Btn onClick={onClickOK}>확인</Btn>
-        </BtnContainer>
-      </BottomContainer>
-    </Container>
+    <Draggable
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      nodeRef={nodeRef}
+      bounds={{ left: -300, top: -75, right: 265, bottom: 450 }}
+    >
+      <Container ref={nodeRef}>
+        <TopContainer>
+          <TitleContainer>
+            <Icon src={"/images/경고.png"} />
+            {"시스템 메세지"}
+          </TitleContainer>
+          <CloseBtn onClick={onClickCancel}>X</CloseBtn>
+        </TopContainer>
+        <BottomContainer>
+          <Text>{message}</Text>
+          <BtnContainer>
+            <Btn onClick={onClickOK}>확인</Btn>
+            <Btn onClick={onClickCancel}>취소</Btn>
+          </BtnContainer>
+        </BottomContainer>
+      </Container>
+    </Draggable>
   );
 };
 

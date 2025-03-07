@@ -18,7 +18,7 @@ const Point = () => {
   const { alert: alertComp } = useContext(AlertContext);
 
   const onSubmitClick = async () => {
-    await alertComp(`이건 내 계정이 아니다...`);
+    await alertComp(`지금은 내 계정이 아니다...`);
   };
 
   return (
