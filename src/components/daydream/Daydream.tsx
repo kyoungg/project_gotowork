@@ -3,9 +3,10 @@ import styled from "styled-components";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { BiDotsVerticalRounded } from "react-icons/bi";
-import { IoMdRefresh } from "react-icons/io";
-import Profile from "./Profile";
+import { IoMdClose, IoMdRefresh } from "react-icons/io";
 import { useState } from "react";
+
+import Profile from "./Profile";
 
 interface DaydreamProps {
   component?: React.ReactNode; // React 컴포넌트 노드
@@ -30,7 +31,7 @@ const Daydream: React.FC<DaydreamProps> = ({ component, isLogin }) => {
             navigate("/");
           }}
         >
-          X
+          <IoMdClose />
         </CloseBtn>
       </TopContainer>
       <MiddleContainer>
@@ -157,6 +158,8 @@ const Url = styled.div`
   background-color: #acacac;
 
   font-size: 21px;
+
+  user-select: none;
 `;
 
 const BottomContainer = styled.div`

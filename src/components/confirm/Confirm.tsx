@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { useRef } from "react";
 import Draggable from "react-draggable";
+import { IoMdClose } from "react-icons/io";
 
 interface Props {
   message: string;
@@ -24,7 +25,9 @@ const Confirm = ({ message, onClickOK, onClickCancel }: Props) => {
             <Icon src={"/images/경고.png"} />
             {"시스템 메세지"}
           </TitleContainer>
-          <CloseBtn onClick={onClickCancel}>X</CloseBtn>
+          <CloseBtn onClick={onClickCancel}>
+            <IoMdClose />
+          </CloseBtn>
         </TopContainer>
         <BottomContainer>
           <Text>{message}</Text>
@@ -99,7 +102,7 @@ const CloseBtn = styled.div`
   margin-right: 10px;
 
   border: solid #808080 1px;
-  box-shadow: 1px 1px 1px 1px gray;
+  box-shadow: 1px 1px 0.2px 0.2px gray;
 
   cursor: pointer;
 `;

@@ -4,6 +4,7 @@ import { AiOutlineArrowRight } from "react-icons/ai";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { BiDotsVerticalRounded } from "react-icons/bi";
 import { IoMdRefresh } from "react-icons/io";
+import { IoMdClose } from "react-icons/io";
 
 interface SpaceshopProps {
   component?: React.ReactNode; // React 컴포넌트 노드
@@ -25,7 +26,7 @@ const Spaceshop: React.FC<SpaceshopProps> = ({ component }) => {
             navigate("/");
           }}
         >
-          X
+          <IoMdClose />
         </CloseBtn>
       </TopContainer>
       <MiddleContainer>
@@ -108,6 +109,7 @@ const CloseBtn = styled.div`
   font-size: 35px;
 
   cursor: pointer;
+  user-select: none;
 `;
 
 const MiddleContainer = styled.div`
@@ -132,6 +134,8 @@ const Url = styled.div`
   background-color: #acacac;
 
   font-size: 16px;
+
+  user-select: none;
 `;
 
 const BottomContainer = styled.div`
