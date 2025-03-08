@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoIosArrowUp } from "react-icons/io";
@@ -16,6 +16,31 @@ const Point = () => {
   const [file, setFile] = useState("");
 
   const { alert: alertComp } = useContext(AlertContext);
+  const dropdownRef = useRef<HTMLDivElement | null>(null);
+  const helpRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      // Dropdown 외부 클릭 시 드롭다운을 닫고
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(e.target as Node)
+      ) {
+        setView(false);
+      }
+
+      // Ranklist 외부 클릭 시 isHelp를 false로 설정
+      if (helpRef.current && !helpRef.current.contains(e.target as Node)) {
+        setIsHelp(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   const onSubmitClick = async () => {
     await alertComp(`지금은 내 계정이 아니다...`);
@@ -25,7 +50,7 @@ const Point = () => {
     <Container>
       <InputContainer>
         <Title>어둠 등급</Title>
-        <DropdownContainer>
+        <DropdownContainer ref={dropdownRef}>
           <Ul
             onClick={() => {
               setView(!view);
@@ -56,7 +81,11 @@ const Point = () => {
           }}
         >
           <GiHelp size="28" />
-          {isHelp && <Ranklist />}
+          {isHelp && (
+            <div ref={helpRef}>
+              <Ranklist />
+            </div>
+          )}
         </HelpBtn>
       </InputContainer>
       <InputContainer>
