@@ -22,17 +22,17 @@ const MainPage = () => {
   const onWehelpClick = async () => {
     if (isDragging) return;
     const result = await confirmComp(`정말 누를까?`);
-    return result == true && onRealhelpClick();
+    return result && onRealhelpClick();
   };
 
   const onRealhelpClick = async () => {
     const result = await confirmComp(`정말?`);
-    return result == true && onRealRealhelpClick();
+    return result && onRealRealhelpClick();
   };
 
   const onRealRealhelpClick = async () => {
     const result = await confirmComp(`진짜로?`);
-    return result == true && onDontClick();
+    return result && onDontClick();
   };
 
   const onDontClick = async () => {
@@ -40,7 +40,7 @@ const MainPage = () => {
   };
 
   const onNothingClick = async () => {
-    await alertComp(`해야할 게 있다!`);
+    await alertComp(`딴짓 할 때가 아니다!`);
   };
 
   const onMemoClick = async () => {
