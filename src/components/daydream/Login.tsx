@@ -12,7 +12,7 @@ const Login = () => {
   const { alert: alertComp } = useContext(AlertContext);
 
   const onFail = async () => {
-    alertComp(`아이디와 비밀번호를\n다시 확인 해 보자!`);
+    alertComp(`아이디와 비밀번호를\n다시 확인해 보자!`);
   };
 
   const handleSubmit = () => {

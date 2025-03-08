@@ -44,7 +44,7 @@ const Footer = () => {
   };
 
   const onResetBtnClick = async () => {
-    const result = await confirmComp(`초기화 할까?\n(전부 초기화 됩니다)`);
+    const result = await confirmComp(`초기화 할까?\n(정말 초기화 됩니다)`);
     return result && handleReset();
   };
 

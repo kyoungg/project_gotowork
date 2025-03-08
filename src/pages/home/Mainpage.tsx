@@ -36,7 +36,7 @@ const MainPage = () => {
   };
 
   const onDontClick = async () => {
-    await alertComp(`좋은 생각이 아닌 것 같다...`);
+    await alertComp(`지금 긴급탈출은 필요 없다...`);
   };
 
   const onNothingClick = async () => {
