@@ -40,7 +40,7 @@ const MainPage = () => {
   };
 
   const onNothingClick = async () => {
-    await alertComp(`딴짓 할 때가 아니다!`);
+    await alertComp(`딴짓 할 때가 아니야!`);
   };
 
   const onMemoClick = async () => {

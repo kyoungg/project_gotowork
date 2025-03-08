@@ -7,6 +7,7 @@ import { GiHelp } from "react-icons/gi";
 import rankData from "../../assets/data/rank";
 import Ranklist from "./Ranklist";
 import AlertContext from "../alert/alertContext";
+import ConfirmContext from "../confirm/confirmContext";
 
 const Point = () => {
   const [view, setView] = useState(false);
@@ -16,6 +17,8 @@ const Point = () => {
   const [file, setFile] = useState("");
 
   const { alert: alertComp } = useContext(AlertContext);
+  const { confirm: confirmComp } = useContext(ConfirmContext);
+
   const dropdownRef = useRef<HTMLDivElement | null>(null);
   const helpRef = useRef<HTMLDivElement | null>(null);
 
@@ -43,7 +46,12 @@ const Point = () => {
   }, []);
 
   const onSubmitClick = async () => {
-    await alertComp(`지금은 내 계정이 아니다...`);
+    const result = await confirmComp(`조장님 계정으로 \n포인트를 등록할까?`);
+    return result && onYesClick();
+  };
+
+  const onYesClick = async () => {
+    await alertComp(`들킬 것 같다 그만두자...`);
   };
 
   return (

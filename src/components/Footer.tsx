@@ -6,10 +6,13 @@ import { IoIosArrowUp } from "react-icons/io";
 import { AiOutlineSound } from "react-icons/ai";
 import { GrPower, GrPowerReset } from "react-icons/gr";
 import { FaRegMoon } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+
 import AlertContext from "./alert/alertContext";
 import ConfirmContext from "./confirm/confirmContext";
 
 const Footer = () => {
+  const navigate = useNavigate();
   const [view, setView] = useState(false);
 
   const powerRef = useRef<HTMLDivElement | null>(null);
@@ -32,12 +35,12 @@ const Footer = () => {
   }, []);
 
   const onEndBtnClick = async () => {
-    await alertComp(`해야 할 게 있다!`);
+    await alertComp(`아직 해야 할 게 있다!`);
   };
 
   const handleReset = async () => {
     localStorage.clear();
-    window.location.reload();
+    navigate("/");
   };
 
   const onResetBtnClick = async () => {
@@ -73,7 +76,7 @@ const Footer = () => {
           </PowerBtn>
           <PowerBtn>
             <FaRegMoon />
-            <BtnText>절전</BtnText>
+            <BtnText onClick={() => onEndBtnClick()}>절전</BtnText>
           </PowerBtn>
           <PowerBtn onClick={() => onEndBtnClick()}>
             <GrPower />
