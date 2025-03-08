@@ -17,7 +17,6 @@ const Confirm = ({ message, onClickOK, onClickCancel }: Props) => {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       nodeRef={nodeRef}
-      bounds={{ left: -300, top: -75, right: 265, bottom: 450 }}
       handle=".top-container"
     >
       <Container ref={nodeRef}>

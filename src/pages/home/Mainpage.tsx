@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useRef, useState } from "react";
+import Draggable from "react-draggable";
 
 import data from "../../assets/data/icon";
 import ConfirmContext from "../../components/confirm/confirmContext";
@@ -15,7 +16,11 @@ const MainPage = () => {
   const { alert: alertComp } = useContext(AlertContext);
   const { memo: memoComp } = useContext(MemoContext);
 
+  const [isDragging, setIsDragging] = useState(false);
+  const nodeRef = useRef(null);
+
   const onWehelpClick = async () => {
+    if (isDragging) return;
     const result = await confirmComp(`정말 누를까?`);
     return result == true && onRealhelpClick();
   };
@@ -39,44 +44,85 @@ const MainPage = () => {
   };
 
   const onMemoClick = async () => {
+    if (isDragging) return;
     await memoComp();
+  };
+
+  const handleOnDrag = () => {
+    setIsDragging(true); // 드래그 중에는 드래그 state를 true로 전환한다.
+  };
+
+  const handleStopDrag = () => {
+    // 드롭 후 100ms 후에 드래그 상태를 false로 전환한다.
+    setTimeout(() => {
+      setIsDragging(false);
+    }, 100);
   };
 
   return (
     <Background>
-      <ul>
-        {data.map((icon) => {
-          return (
+      {data.map((icon) => {
+        return (
+          <Draggable
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            nodeRef={nodeRef}
+            onDrag={() => handleOnDrag()} // 드래그 시 실행되는 부분
+            onStop={handleStopDrag} // 드롭 시 실행되는 부분
+            key={icon.name}
+          >
             <Icon
               key={icon.id}
-              onClick={() =>
-                icon.isModal ? onNothingClick() : navigate(icon.path)
-              }
+              onClick={() => {
+                if (isDragging) return; // 드래그 중일 때 클릭 무시
+                // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+                icon.isModal ? onNothingClick() : navigate(icon.path);
+              }}
+              ref={nodeRef}
             >
               <Img src={icon.img} />
               <Name>{icon.name}</Name>
             </Icon>
-          );
-        })}
+          </Draggable>
+        );
+      })}
+      <Draggable
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        nodeRef={nodeRef}
+        onDrag={() => handleOnDrag()} // 드래그 시 실행되는 부분
+        onStop={handleStopDrag} // 드롭 시 실행되는 부분
+      >
         <Icon
           onClick={() => {
             onMemoClick();
           }}
+          ref={nodeRef}
         >
           <Img src={"images/메모.png"} />
           <Name>{"이자헌 조-..."}</Name>
         </Icon>
-        {weHelp && (
+      </Draggable>
+      {weHelp && (
+        <Draggable
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          nodeRef={nodeRef}
+          onDrag={() => handleOnDrag()} // 드래그 시 실행되는 부분
+          onStop={handleStopDrag} // 드롭 시 실행되는 부분
+        >
           <Icon
             onClick={() => {
+              if (isDragging) return;
               onWehelpClick();
             }}
+            ref={nodeRef}
           >
             <Img src={"/images/redbutton.png"} />
             <Name>{"우리가 도움!"}</Name>
           </Icon>
-        )}
-      </ul>
+        </Draggable>
+      )}
     </Background>
   );
 };
@@ -90,7 +136,7 @@ const Background = styled.div`
   height: 708px;
 `;
 
-const Icon = styled.li`
+const Icon = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;

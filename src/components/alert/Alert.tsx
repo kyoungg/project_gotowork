@@ -17,7 +17,6 @@ const Alert = ({ message, onClickOK, onClickCancel }: Props) => {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       nodeRef={nodeRef}
-      bounds={{ left: -300, top: -75, right: 265, bottom: 450 }}
       handle=".top-container"
     >
       <Container ref={nodeRef}>
@@ -34,7 +33,6 @@ const Alert = ({ message, onClickOK, onClickCancel }: Props) => {
           <Text>{message}</Text>
           <BtnContainer>
             <Btn onClick={onClickOK}>확인</Btn>
-            <Btn onClick={onClickCancel}>취소</Btn>
           </BtnContainer>
         </BottomContainer>
       </Container>
@@ -47,8 +45,8 @@ export default Alert;
 const Container = styled.div`
   position: absolute;
 
-  top: 10%;
-  right: 30%;
+  top: 7%;
+  right: 27%;
 
   width: 445px;
   height: 230px;

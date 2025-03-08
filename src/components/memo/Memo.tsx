@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Draggable from "react-draggable";
 import { IoMdClose } from "react-icons/io";
 import styled from "styled-components";
@@ -8,6 +8,10 @@ interface Props {
 }
 
 const Memo = ({ onClickCancel }: Props) => {
+  const [inputValue, setInputValue] = useState(
+    `[이자헌 조장 / 105105301]\n\nID : yongj1111\n\nPW : dydajflgodks!111`
+  );
+
   const nodeRef = useRef(null);
 
   return (
@@ -15,7 +19,6 @@ const Memo = ({ onClickCancel }: Props) => {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       nodeRef={nodeRef}
-      bounds={{ left: -300, top: -75, right: 265, bottom: 450 }}
       handle=".top-container"
     >
       <Container ref={nodeRef}>
@@ -36,7 +39,10 @@ const Memo = ({ onClickCancel }: Props) => {
           <MiddleBtn>도움말(H)</MiddleBtn>
         </MiddleContainer>
         <BottomContainer>
-          <Text>{`[이자헌 조장 / 105105301]\n\nID : yongj1111\n\nPW : dydajflgodks!111`}</Text>
+          <Text
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+          />
         </BottomContainer>
       </Container>
     </Draggable>
@@ -52,8 +58,8 @@ const Container = styled.div`
 
   position: absolute;
 
-  top: 10%;
-  right: 30%;
+  top: 15%;
+  right: 45%;
 
   width: 500px;
   height: 400px;
