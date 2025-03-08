@@ -59,7 +59,7 @@ const Container = styled.div`
   position: absolute;
 
   top: 15%;
-  right: 45%;
+  right: 7%;
 
   width: 500px;
   height: 400px;
