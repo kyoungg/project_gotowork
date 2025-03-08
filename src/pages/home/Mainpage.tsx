@@ -5,6 +5,7 @@ import { useContext } from "react";
 import data from "../../assets/data/icon";
 import ConfirmContext from "../../components/confirm/confirmContext";
 import AlertContext from "../../components/alert/alertContext";
+import MemoContext from "../../components/memo/memoContext";
 
 const MainPage = () => {
   const navigate = useNavigate();
@@ -12,6 +13,7 @@ const MainPage = () => {
 
   const { confirm: confirmComp } = useContext(ConfirmContext);
   const { alert: alertComp } = useContext(AlertContext);
+  const { memo: memoComp } = useContext(MemoContext);
 
   const onWehelpClick = async () => {
     const result = await confirmComp(`정말 누를까?`);
@@ -36,6 +38,10 @@ const MainPage = () => {
     await alertComp(`해야할 게 있다!`);
   };
 
+  const onMemoClick = async () => {
+    await memoComp();
+  };
+
   return (
     <Background>
       <ul>
@@ -52,6 +58,14 @@ const MainPage = () => {
             </Icon>
           );
         })}
+        <Icon
+          onClick={() => {
+            onMemoClick();
+          }}
+        >
+          <Img src={"images/메모.png"} />
+          <Name>{"이자헌 조-..."}</Name>
+        </Icon>
         {weHelp && (
           <Icon
             onClick={() => {

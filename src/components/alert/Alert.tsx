@@ -18,9 +18,10 @@ const Alert = ({ message, onClickOK, onClickCancel }: Props) => {
       // @ts-ignore
       nodeRef={nodeRef}
       bounds={{ left: -300, top: -75, right: 265, bottom: 450 }}
+      handle=".top-container"
     >
       <Container ref={nodeRef}>
-        <TopContainer>
+        <TopContainer className="top-container">
           <TitleContainer>
             <Icon src={"/images/경고.png"} />
             {"시스템 메세지"}

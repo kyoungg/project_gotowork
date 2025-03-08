@@ -3,7 +3,11 @@ import Draggable from "react-draggable";
 import { IoMdClose } from "react-icons/io";
 import styled from "styled-components";
 
-const Memo = () => {
+interface Props {
+  onClickCancel: () => void;
+}
+
+const Memo = ({ onClickCancel }: Props) => {
   const nodeRef = useRef(null);
 
   return (
@@ -12,14 +16,15 @@ const Memo = () => {
       // @ts-ignore
       nodeRef={nodeRef}
       bounds={{ left: -300, top: -75, right: 265, bottom: 450 }}
+      handle=".top-container"
     >
-      <Container>
-        <TopContainer ref={nodeRef}>
+      <Container ref={nodeRef}>
+        <TopContainer className="top-container">
           <TitleContainer>
             <Icon src={"/images/메모.png"} />
             {`[이자헌 조장·· - 메모장`}
           </TitleContainer>
-          <CloseBtn>
+          <CloseBtn onClick={onClickCancel}>
             <IoMdClose />
           </CloseBtn>
         </TopContainer>
@@ -50,8 +55,8 @@ const Container = styled.div`
   top: 10%;
   right: 30%;
 
-  width: 675px;
-  height: 540px;
+  width: 500px;
+  height: 400px;
 
   background-color: #d4d0c8;
   border: solid #808080 1px;
@@ -135,7 +140,7 @@ const BottomContainer = styled.div`
   background-color: white;
 
   width: 97%;
-  height: 85%;
+  height: 82%;
 `;
 
 const Text = styled.textarea`

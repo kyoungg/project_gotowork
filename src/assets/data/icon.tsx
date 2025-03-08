@@ -27,13 +27,6 @@ const data = [
     path: "/messenger",
     isModal: true,
   },
-  {
-    id: "icon05",
-    name: "[이자헌 조-...",
-    img: "images/메모.png",
-    path: "modal",
-    isModal: true,
-  },
 ];
 
 export default data;
