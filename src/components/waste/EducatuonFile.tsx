@@ -3,7 +3,11 @@ import Draggable from "react-draggable";
 import { IoMdClose } from "react-icons/io";
 import styled from "styled-components";
 
-const EducatuonFile = () => {
+interface FileProps {
+  onClose: () => void;
+}
+
+const EducatuonFile = ({ onClose }: FileProps) => {
   const nodeRef = useRef(null);
 
   return (
@@ -19,7 +23,7 @@ const EducatuonFile = () => {
             <Icon src={"/images/교육서.png"} />
             {`교육서 - 메모장`}
           </TitleContainer>
-          <CloseBtn>
+          <CloseBtn onClick={onClose}>
             <IoMdClose />
           </CloseBtn>
         </TopContainer>

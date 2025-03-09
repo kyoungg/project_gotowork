@@ -1,13 +1,21 @@
 import { IoMdClose } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { useState } from "react";
 
 import EducatuonFile from "../../components/waste/EducatuonFile";
 import TxtFile from "../../components/waste/TxtFile";
 import TipFile from "../../components/waste/TipFile";
 
 const WastePage = () => {
+  const [selectedFile, setSelectedFile] = useState<
+    "교육서" | "검은 그늘 속에서" | "야간청소근무팁" | null
+  >(null);
   const navigate = useNavigate();
+
+  const handleClose = () => {
+    setSelectedFile(null); // 모든 컴포넌트를 닫음
+  };
 
   return (
     <Background>
@@ -26,21 +34,25 @@ const WastePage = () => {
       </TopContainer>
       <MiddleContainer></MiddleContainer>
       <BottomContainer>
-        <Icon>
+        <Icon onClick={() => setSelectedFile("교육서")}>
           <Img src={"/images/교육서.png"} />
           <Name>{"교육서"}</Name>
         </Icon>
-        {<EducatuonFile />}
-        <Icon>
+        {selectedFile === "교육서" && <EducatuonFile onClose={handleClose} />}
+
+        <Icon onClick={() => setSelectedFile("검은 그늘 속에서")}>
           <Img src={"/images/txt.png"} />
           <Name>{"검은 그늘 속에서.txt"}</Name>
         </Icon>
-        {<TxtFile />}
-        <Icon>
+        {selectedFile === "검은 그늘 속에서" && (
+          <TxtFile onClose={handleClose} />
+        )}
+
+        <Icon onClick={() => setSelectedFile("야간청소근무팁")}>
           <Img src={"/images/교육서.png"} />
           <Name>{"야간청소\n근무팁"}</Name>
         </Icon>
-        {<TipFile />}
+        {selectedFile === "야간청소근무팁" && <TipFile onClose={handleClose} />}
       </BottomContainer>
     </Background>
   );

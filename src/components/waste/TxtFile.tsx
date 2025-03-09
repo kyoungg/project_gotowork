@@ -3,7 +3,11 @@ import Draggable from "react-draggable";
 import { IoMdClose } from "react-icons/io";
 import styled from "styled-components";
 
-const TxtFile = () => {
+interface FileProps {
+  onClose: () => void;
+}
+
+const TxtFile = ({ onClose }: FileProps) => {
   const nodeRef = useRef(null);
 
   return (
@@ -19,7 +23,7 @@ const TxtFile = () => {
             <Icon src={"/images/txt.png"} />
             {`검은 그늘 속에서 - txt`}
           </TitleContainer>
-          <CloseBtn>
+          <CloseBtn onClick={onClose}>
             <IoMdClose />
           </CloseBtn>
         </TopContainer>
