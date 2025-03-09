@@ -21,7 +21,7 @@ const WastePage = () => {
     <Background>
       <TopContainer>
         <Title>
-          <Logo src="images/빈창.png" />
+          <Logo src="/images/빈창.png" />
           휴지통
         </Title>
         <CloseBtn

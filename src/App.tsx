@@ -6,7 +6,8 @@ import Layout from "./Layout";
 
 const MainPage = lazy(() => import("./pages/home/MainPage"));
 const WastePage = lazy(() => import("./pages/home/WastePage"));
-const TamraPage = lazy(() => import("./pages/home/TamraPage"));
+const TamraPage = lazy(() => import("./pages/train/TamraPage"));
+const MokpoPage = lazy(() => import("./pages/train/MokpoPage"));
 const DaydreamPage = lazy(() => import("./pages/daydream/DaydreamPage"));
 const DaydreamPointPage = lazy(() => import("./pages/daydream/PointPage"));
 const DaydreamShopPage = lazy(() => import("./pages/daydream/ShopPage"));
@@ -29,7 +30,8 @@ const router = createBrowserRouter([
         element: <MainPage />,
       },
       { path: "waste", element: <WastePage /> },
-      { path: "tamra", element: <TamraPage /> },
+      { path: "train/mokpo", element: <MokpoPage /> },
+      { path: "train/tamra", element: <TamraPage /> },
       { path: "daydream", element: <DaydreamPage /> },
       { path: "daydream/point", element: <DaydreamPointPage /> },
       { path: "daydream/shop", element: <DaydreamShopPage /> },
