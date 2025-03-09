@@ -65,9 +65,9 @@ const Footer = () => {
       </StartBtn>
       <MenuContainer>
         <IconContainer>
-          {highSchool && <FaSchool size="28" />}
-          {noname && <MdCleaningServices size="28" />}
-          {hangman && <TbMoodKidFilled size="28" />}
+          {highSchool === "세광공업고등학교" && <FaSchool size="28" />}
+          {noname === "이름님" && <MdCleaningServices size="28" />}
+          {hangman === "hangman" && <TbMoodKidFilled size="28" />}
         </IconContainer>
         <Clock>
           <p>2025-03-05</p>

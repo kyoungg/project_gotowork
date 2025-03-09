@@ -15,7 +15,7 @@ const TipFile = ({ onClose }: FileProps) => {
 
   const onBtnClick = async () => {
     const result = await alertComp(`..우리는 무사히 청소를 마쳤다!`);
-    localStorage.setItem("noname", "이름님?");
+    localStorage.setItem("noname", "이름님");
     return result && window.location.reload();
   };
 
