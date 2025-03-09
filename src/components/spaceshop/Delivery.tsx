@@ -20,13 +20,15 @@ const Delivery = () => {
     }, INTERVAL);
 
     return () => clearInterval(timer);
-  }, [timeLeft]); // timeLeft가 변경될 때마다 실행
+  }, [navigate, timeLeft]); // timeLeft가 변경될 때마다 실행
 
   return (
     <Background>
       <Container>
         <Title>성공 구매!</Title>
-        <Text>물건이 로켓을 탔다!</Text>
+        <Text>
+          물건이 <span>로켓</span>을 탔다!
+        </Text>
         <Text>도착까지</Text>
         <Clock>00 : 00 : 0{timeLeft / 1000}</Clock>
       </Container>
@@ -66,9 +68,15 @@ const Title = styled.div`
 const Text = styled.div`
   padding-bottom: 5px;
   font-size: 36px;
+
+  & span {
+    text-decoration: underline;
+  }
 `;
 
 const Clock = styled.div`
   font-size: 36px;
   color: #ff0000;
+
+  text-decoration: underline;
 `;

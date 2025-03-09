@@ -149,7 +149,7 @@ const InputContainer = styled.div`
   justify-content: flex-start;
 
   height: 40px;
-  width: 50%;
+  width: 100%;
 `;
 
 const DropdownContainer = styled.div`
@@ -230,8 +230,8 @@ const UploadBtn = styled.button`
 `;
 
 const HelpBtn = styled.div`
-  padding-left: 35%;
-  padding-bottom: 2px;
+  padding-left: 140px;
+  margin-bottom: 8px;
 
   cursor: pointer;
 `;

@@ -85,8 +85,8 @@ const Background = styled.div`
 
   background-color: #d4d0c8;
 
-  width: 1024px;
-  height: 708px;
+  width: 100%;
+  min-height: 93vh;
 `;
 
 const TopContainer = styled.div`
@@ -166,27 +166,32 @@ const BottomContainer = styled.div`
   background-color: white;
 
   width: 98%;
-  height: 86%;
+  height: 82vh;
 
   border: solid #acacac 1px;
 `;
 
 const GotoSpace = styled.div`
-  padding-top: 190px;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+
+  position: absolute;
+  right: 2vh;
+  bottom: 12vh;
 `;
 
 const SpaceImg = styled.img`
-  width: 210px;
-  height: 140px;
+  width: 212px;
+  height: 135px;
   padding-right: 70px;
 `;
 
 const Spacehand = styled.img`
   width: 82px;
   height: 82px;
+
+  transform: rotate(270deg);
 `;
 
 const Pngwing = styled.div`
@@ -200,4 +205,7 @@ const SpaceText = styled.div`
   font-size: 12px;
 
   top: 35px;
+  left: 5px;
+
+  text-decoration: underline;
 `;

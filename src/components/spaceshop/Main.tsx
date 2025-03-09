@@ -12,7 +12,9 @@ const Main = () => {
           {"우주 쇼핑몰"}
           <A>{">"}</A>
         </Title>
-        <Detaile>※외계에서 온 멋진 물건※~!!</Detaile>
+        <Detaile>
+          ※외계에서 온 <span>멋진</span> 물건※~!!
+        </Detaile>
         <Link
           onClick={() => {
             navigate("/spaceshop/pay");
@@ -44,13 +46,17 @@ const Title = styled.div`
 
   font-size: 64px;
   color: #44ff00;
-  padding-top: 47%;
+  padding-top: 57%;
 `;
 
 const Text = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  & span {
+    text-decoration: underline;
+  }
 `;
 
 const A = styled.div`
@@ -71,23 +77,23 @@ const Link = styled.div`
 
 const moving = keyframes`
   0%{
-    top: 10%;
-    left: 10%;
+    top: 3%;
+    left: 1%;
     transform : rotate(0deg);
   }
   30%{
     top: 40%;
-    left: 60%;
+    left: 85%;
     transform : rotate(360deg)
   }
   60%{
-    top: 55%;
+    top: 70%;
     left: 10%;
     transform : rotate(0deg)
   }
   100%{
-    top: 10%;
-    left: 10%;
+    top: 3%;
+    left: 80%;
     transform : rotate(360deg)
   }
 `;
@@ -97,5 +103,5 @@ const Ufo = styled.img`
   height: 200px;
 
   position: absolute;
-  animation: ${moving} 7s 0s linear alternate infinite;
+  animation: ${moving} 7s 1s linear alternate infinite;
 `;

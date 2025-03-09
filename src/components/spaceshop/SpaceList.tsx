@@ -37,7 +37,16 @@ const SpaceList = () => {
   const handleSubmit = () => {
     if (payList.find((item) => item.id === "article04")) {
       localStorage.setItem("weHelp", "change");
-    }
+    } //우리가 도움!
+    if (payList.find((item) => item.id === "article05")) {
+      localStorage.setItem("coin", "uroboros");
+    } //은화뱀
+    if (payList.find((item) => item.id === "article08")) {
+      localStorage.setItem("edition", "foot");
+    } //혈욕조
+    if (payList.find((item) => item.id === "article12")) {
+      localStorage.setItem("isfake", "haha");
+    } //네크로노미콘
     return navigate("/spaceshop/delivery");
   };
 
@@ -139,7 +148,7 @@ const Left = styled.div`
   flex-direction: column;
   align-items: flex-end;
 
-  width: 50%;
+  width: 47%;
   height: 100%;
 `;
 
@@ -197,6 +206,8 @@ const Viptext = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+
+  margin-top: 5px;
 `;
 
 const CartList = styled.div`

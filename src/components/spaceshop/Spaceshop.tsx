@@ -60,8 +60,8 @@ const Background = styled.div`
 
   background-color: #d4d0c8;
 
-  width: 1024px;
-  height: 708px;
+  width: 100%;
+  min-height: 93vh;
 `;
 
 const TopContainer = styled.div`
@@ -134,15 +134,13 @@ const Url = styled.div`
   background-color: #acacac;
 
   font-size: 16px;
-
-  user-select: none;
 `;
 
 const BottomContainer = styled.div`
   background-color: white;
 
   width: 98%;
-  height: 86%;
+  height: 82vh;
 
   border: solid #acacac 1px;
 `;

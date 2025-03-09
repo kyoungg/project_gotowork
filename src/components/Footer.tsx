@@ -101,8 +101,9 @@ const Background = styled.div`
 
   background-color: #c2c5b0;
 
-  width: 1024px;
-  height: 60px;
+  width: 100%;
+  /* height: 60px; */
+  height: 7vh;
 `;
 
 const StartBtn = styled.div`
