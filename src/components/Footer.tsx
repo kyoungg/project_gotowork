@@ -45,6 +45,7 @@ const Footer = () => {
   const handleReset = async () => {
     localStorage.clear();
     navigate("/");
+    window.location.reload();
   };
 
   const onResetBtnClick = async () => {
@@ -153,7 +154,7 @@ const Clock = styled.div`
   flex-direction: column;
   align-items: flex-end;
 
-  width: 80px;
+  width: 90px;
   height: 30px;
   padding-left: 10px;
 
