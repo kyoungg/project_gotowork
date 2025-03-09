@@ -3,8 +3,8 @@ const data = [
     id: "icon01",
     name: "휴지통",
     img: "images/빈창.png",
-    path: "modal",
-    isModal: true,
+    path: "/waste",
+    isModal: false,
   },
   {
     id: "icon02",

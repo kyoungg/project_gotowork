@@ -1,17 +1,9 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import Draggable from "react-draggable";
 import { IoMdClose } from "react-icons/io";
 import styled from "styled-components";
 
-interface Props {
-  onClickCancel: () => void;
-}
-
-const Memo = ({ onClickCancel }: Props) => {
-  const [inputValue, setInputValue] = useState(
-    `[이자헌 조장 / 105105301]\n\nID : yongj1111\n\nPW : dydajflgodks!111`
-  );
-
+const EducatuonFile = () => {
   const nodeRef = useRef(null);
 
   return (
@@ -25,9 +17,9 @@ const Memo = ({ onClickCancel }: Props) => {
         <TopContainer className="top-container">
           <TitleContainer>
             <Icon src={"/images/교육서.png"} />
-            {`[이자헌 조장·· - 메모장`}
+            {`교육서 - 메모장`}
           </TitleContainer>
-          <CloseBtn onClick={onClickCancel}>
+          <CloseBtn>
             <IoMdClose />
           </CloseBtn>
         </TopContainer>
@@ -39,17 +31,14 @@ const Memo = ({ onClickCancel }: Props) => {
           <MiddleBtn>도움말(H)</MiddleBtn>
         </MiddleContainer>
         <BottomContainer>
-          <Text
-            value={inputValue}
-            onChange={(e) => setInputValue(e.target.value)}
-          />
+          <Text></Text>
         </BottomContainer>
       </Container>
     </Draggable>
   );
 };
 
-export default Memo;
+export default EducatuonFile;
 
 const Container = styled.div`
   display: flex;
@@ -58,11 +47,11 @@ const Container = styled.div`
 
   position: absolute;
 
-  top: 15%;
-  right: 7%;
+  top: 12vh;
+  left: 35vh;
 
-  width: 500px;
-  height: 400px;
+  width: 80vh;
+  height: 78vh;
 
   background-color: #d4d0c8;
   border: solid #808080 1px;
@@ -128,7 +117,7 @@ const MiddleContainer = styled.div`
   color: black;
 
   width: 97%;
-  height: 5%;
+  height: 2vh;
 `;
 
 const MiddleBtn = styled.div`
@@ -146,10 +135,12 @@ const BottomContainer = styled.div`
   background-color: white;
 
   width: 97%;
-  height: 82%;
+  height: 69vh;
+
+  overflow-y: auto;
 `;
 
-const Text = styled.textarea`
+const Text = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;

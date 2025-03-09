@@ -116,7 +116,7 @@ const MainPage = () => {
             }}
             ref={nodeRef}
           >
-            <Img src={"images/메모.png"} />
+            <Img src={"/images/교육서.png"} />
             <Name>{"이자헌 조-..."}</Name>
           </Icon>
         </Draggable>
@@ -231,6 +231,7 @@ const Icon = styled.li`
   align-items: center;
 
   width: 80px;
+  height: 80px;
   margin: 7px;
 
   cursor: pointer;

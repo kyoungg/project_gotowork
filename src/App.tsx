@@ -4,7 +4,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
 import Layout from "./Layout";
 
-const MainPage = lazy(() => import("./pages/home/Mainpage"));
+const MainPage = lazy(() => import("./pages/home/MainPage"));
+const WastePage = lazy(() => import("./pages/home/WastePage"));
 const DaydreamPage = lazy(() => import("./pages/daydream/DaydreamPage"));
 const DaydreamPointPage = lazy(() => import("./pages/daydream/PointPage"));
 const DaydreamShopPage = lazy(() => import("./pages/daydream/ShopPage"));
@@ -26,6 +27,7 @@ const router = createBrowserRouter([
         index: true,
         element: <MainPage />,
       },
+      { path: "waste", element: <WastePage /> },
       { path: "daydream", element: <DaydreamPage /> },
       { path: "daydream/point", element: <DaydreamPointPage /> },
       { path: "daydream/shop", element: <DaydreamShopPage /> },
