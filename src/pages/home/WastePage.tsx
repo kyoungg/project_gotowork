@@ -36,7 +36,9 @@ const WastePage = () => {
       <BottomContainer>
         <Icon onClick={() => setSelectedFile("교육서")}>
           <Img src={"/images/교육서.png"} />
-          <Name>{"교육서"}</Name>
+          <Name>
+            <p>{"교육서"}</p>
+          </Name>
         </Icon>
         {selectedFile === "교육서" && <EducatuonFile onClose={handleClose} />}
 
@@ -167,4 +169,9 @@ const Name = styled.div`
   margin-top: 2px;
 
   width: 100%;
+
+  & p {
+    font-size: 18px;
+    font-family: "HakgyoansimDunggeunmisoTTF-B";
+  }
 `;

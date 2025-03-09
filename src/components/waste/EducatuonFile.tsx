@@ -1,7 +1,9 @@
-import { useRef } from "react";
+import { useContext, useRef } from "react";
 import Draggable from "react-draggable";
 import { IoMdClose } from "react-icons/io";
 import styled from "styled-components";
+
+import AlertContext from "../alert/alertContext";
 
 interface FileProps {
   onClose: () => void;
@@ -9,6 +11,12 @@ interface FileProps {
 
 const EducatuonFile = ({ onClose }: FileProps) => {
   const nodeRef = useRef(null);
+  const { alert: alertComp } = useContext(AlertContext);
+
+  const onBtnClick = async () => {
+    const result = await alertComp(`신 규 선 생 님 이 네 !`);
+    return result && window.location.reload();
+  };
 
   return (
     <Draggable
@@ -35,7 +43,33 @@ const EducatuonFile = ({ onClose }: FileProps) => {
           <MiddleBtn>도움말(H)</MiddleBtn>
         </MiddleContainer>
         <BottomContainer>
-          <Text></Text>
+          <TextContainer>
+            <Text>
+              <p> ■■■ 선생님, 들어보세요. </p>
+              <p>나는 교육서를 다 읽었어요!</p>
+              <br />
+              <br /> 1. ■■부속유치원은 영원합니다.
+              <br /> 2. 나는 규칙을 준수합니다.
+              <br />
+              <br /> 그럼 완벽해 나는 완벽한 선생님이야 모두가 안전해 행복 해
+              절대 사고는 없고 뛰어내린 사람도 없고 완벽하고 안전 한 유치원이야
+              모두가 규칙을 지키며 보육하지 완벽한 선생 님이야 모두가 규칙을
+              지켜 계속 끝없이 이곳에서 교육서를 다 읽으면 우리 ■■부속유치원에
+              다니면 ■■■ 선생님도 곧 나처럼 될 거야 이제 교육서만 읽어 빨리
+              <br />
+              <br />
+              <br />
+              <br />
+              나는완벽한선생님이야!나는완벽한선생님이야!나는완벽한선생님이야!나는완벽한선생님이야!나는완벽한선생님이야!나는완벽한선생님이야!나는완벽한선생님이야!나는완벽한선생님이야!나는완벽한선생님이야!나는완벽한선생님이야!나는완벽한선생님이야!나는완벽한선생님이야!나는완벽한선생님이야!나는완벽한선생님이야!나는완벽한선생님이야!나는완벽한선생님이야!나는완벽한선생님이야!나는완벽한선생님이야!나는완벽한선생님이야!나는완벽한선생님이야!나는완벽한선생님이야!나는완벽한선생님이야!나는완벽한선생님이야!나는완벽한선생님이야!나는완벽한선생님이야!나는완벽한선생님이야!나는완벽한선생님이야!나는완벽한선생님이야!나는완벽한선생님이야!나는완벽한선생님이야!나는완벽한선생님이야!나는완벽한선생님이야!나는완벽한선생님이야!나는완벽한선생님이야!나는완벽한선생님이야!나는완벽한선생님이야!나는완벽한선생님이야!나는완벽한선생님이야!나는완벽한선생님이야!나는완벽한선생님이야!나는완벽한선생님이야!나는완벽한선생님이야!나는완벽한선생님이야!나는완벽한선생님이야!나는완벽한선생님이야!나는완벽한선생님이야!나는완벽한선생님이야!나는완벽한선생님이야!나는완벽한선생님이야!나는완벽한선생님이야!나는완벽한선생님이야!나는완벽한선생님이야!왜나하면
+              <RedText>규칙을 어기지 않을 거니까!</RedText>
+              <p>
+                너는죽어너는죽어너는죽어나는아니야나는아니야나는아니야정말다행이야정말다행이야완벽해완벽해너는죽어너는죽어너는죽어나는아니야나는아니야나는아니야정말다행이야정말다행이야완벽해완벽해너는죽어너는죽어너는죽어나는아니야나는아니야나는아니야정말다행이야정말다행이야완벽해완벽해왜냐하면
+              </p>
+              <button onClick={() => onBtnClick()}>
+                나는교육서를완독했어!{" "}
+              </button>
+            </Text>
+          </TextContainer>
         </BottomContainer>
       </Container>
     </Draggable>
@@ -59,6 +93,8 @@ const Container = styled.div`
 
   background-color: #d4d0c8;
   border: solid #808080 1px;
+
+  font-family: "HakgyoansimDunggeunmisoTTF-R";
 `;
 
 const Icon = styled.img`
@@ -144,7 +180,7 @@ const BottomContainer = styled.div`
   overflow-y: auto;
 `;
 
-const Text = styled.div`
+const TextContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -161,4 +197,38 @@ const Text = styled.div`
   outline: none;
   resize: none;
   word-wrap: break-word;
+`;
+
+const Text = styled.p`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+
+  line-height: 1.3;
+  font-family: "HakgyoansimDunggeunmisoTTF-R";
+
+  & p {
+    font-size: 40px;
+    font-family: "HakgyoansimDunggeunmisoTTF-B";
+  }
+
+  & span {
+    text-decoration: line-through;
+  }
+
+  & button {
+    font-family: "HakgyoansimDunggeunmisoTTF-B";
+    font-size: 50px;
+    color: #ff0000;
+    padding: 3px;
+    margin: 5px;
+
+    cursor: pointer;
+  }
+`;
+
+const RedText = styled.p`
+  color: #ff0000;
 `;

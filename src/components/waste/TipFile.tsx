@@ -14,7 +14,7 @@ const TipFile = ({ onClose }: FileProps) => {
   const { alert: alertComp } = useContext(AlertContext);
 
   const onBtnClick = async () => {
-    const result = await alertComp(`우리는 무사히 청소를 마쳤다!`);
+    const result = await alertComp(`..우리는 무사히 청소를 마쳤다!`);
     return result && window.location.reload();
   };
 
@@ -130,20 +130,19 @@ const TipFile = ({ onClose }: FileProps) => {
               <br />
               13. 어? 문이 열렸어?
               <br />
-              ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ
+              ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ
               <WhiteText>
+                어떻게 알았어? 어떻게 알았어? 어떻게 알았어? 어떻게 알았어?
                 어떻게 알았어? 어떻게 알았어? 어떻게 알았어? 어떻게 알았어?
                 어떻게 알았어? 어떻게 알았어? 어떻게 알았어? 어떻게 알았어?
                 <p>어떻게 알았어?</p>
                 낄낄낄낄낄낄낄낄낄낄낄낄낄낄낄낄낄낄낄낄낄낄낄낄낄낄낄낄낄낄낄낄낄낄낄낄낄낄낄낄낄낄낄낄낄낄낄낄낄낄낄낄낄낄낄낄낄낄낄낄낄낄낄낄낄!!
-                <p>안녕!!! 너희 이름님을 믿니이이이??</p>
-                그럼 이름님에 대해 들어줘어어어어어어어
-                <p>
-                  하하하하하하하하하하하하하하하하하하하하하하하하하하하하하하하하하하하하하하하하하하하하하하하하하하하하하하하하하하하하하하하하
-                </p>
                 <button onClick={() => onBtnClick()}>
-                  이 상황이 지나갔으면 좋겠다!
+                  안녕!!! 너희 이름님을 믿니이이이??
                 </button>
+                <br />
+                <br />
+                <br />
               </WhiteText>
             </Text>
           </TextContainer>
@@ -162,8 +161,8 @@ const Container = styled.div`
 
   position: absolute;
 
-  top: 12vh;
-  left: 32vh;
+  top: 10vh;
+  left: 24vh;
 
   width: 85vh;
   height: 78vh;
