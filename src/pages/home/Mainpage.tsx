@@ -71,7 +71,7 @@ const MainPage = () => {
   };
 
   const onTrainClick = async () => {
-    const result = await confirmComp(`목포행 기차다. \n 누를까?`);
+    const result = await confirmComp(`목포행 기차다.`);
     return result && navigate("/train/mokpo");
   };
 

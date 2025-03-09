@@ -17,7 +17,7 @@ const MokpoPage = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       navigate("/train/tamra");
-    }, 15500);
+    }, 16000);
     return () => clearTimeout(timer);
   }, [navigate]);
 
@@ -178,7 +178,7 @@ const changeColor = keyframes`
 `;
 
 const fadeOut = keyframes`
-  95% {
+  0% {
     opacity: 1;
   }
   100% {
@@ -214,7 +214,7 @@ const FadeoutText = styled.p`
   color: #00ff1a;
   font-size: 120px;
 
-  animation: ${changeColor} 6s forwards, ${fadeOut} 6s forwards;
+  animation: ${changeColor} 6s forwards, ${fadeOut} 5s forwards;
 `;
 
 const FadeinText = styled.p`
@@ -225,7 +225,7 @@ const FadeinText = styled.p`
   color: #7800f7;
   font-size: 120px;
 
-  animation: ${Blink} 5s 6s forwards;
+  animation: ${Blink} 5s 5s forwards;
 `;
 
 const EndText = styled.p`
