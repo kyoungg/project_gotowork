@@ -10,7 +10,9 @@ const WastePage = () => {
   const { alert: alertComp } = useContext(AlertContext);
 
   const onCloseBtnClick = async () => {
-    await alertComp(`내릴 수 없다!`);
+    await alertComp(
+      `내릴 수 없다! 내릴 수 없다! 내릴 수 없다! 내릴 수 없다! 내릴 수 없다! 내릴 수 없다! 내릴 수 없다! 내릴 수 없다! 내릴 수 없다! 내릴 수 없다! 내릴 수 없다! 내릴 수 없다! 내릴 수 없다! 내릴 수 없다!`
+    );
   };
 
   return (
@@ -85,7 +87,8 @@ const Title = styled.div`
   align-items: center;
 
   color: #ff0000;
-  font-size: 20px;
+  margin-left: 12px;
+  font-size: 23px;
 `;
 
 const CloseBtn = styled.div`
@@ -100,7 +103,6 @@ const CloseBtn = styled.div`
   margin-right: 12px;
 
   border: solid #473838 1px;
-  box-shadow: 1px 1px 1px 1px #473838;
 
   font-size: 35px;
 

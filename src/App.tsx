@@ -2,7 +2,8 @@ import { lazy } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import "./App.css";
-import Layout from "./Layout";
+import Layout from "./layout/Layout";
+import NothingLayout from "./layout/NothingLayout";
 
 const MainPage = lazy(() => import("./pages/home/MainPage"));
 const WastePage = lazy(() => import("./pages/home/WastePage"));
@@ -39,7 +40,12 @@ const router = createBrowserRouter([
       { path: "spaceshop/delivery", element: <SpaceShopDeliveryPage /> },
     ],
   },
-  { path: "train/tamra", element: <TamraPage /> },
+  {
+    path: "/",
+    element: <NothingLayout />,
+    errorElement: <a>im error!</a>,
+    children: [{ path: "train/tamra", element: <TamraPage /> }],
+  },
 ]);
 
 export default function App() {

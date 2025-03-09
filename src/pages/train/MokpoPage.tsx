@@ -166,10 +166,10 @@ const changeColor = keyframes`
   38% {
     color: gray;
   }
-  60%{
+  40%{
     color: #00ff1a;
   }
-  65%{
+  50%{
     color: gray;
   }
   100% {
@@ -178,7 +178,7 @@ const changeColor = keyframes`
 `;
 
 const fadeOut = keyframes`
-  60% {
+  95% {
     opacity: 1;
   }
   100% {
