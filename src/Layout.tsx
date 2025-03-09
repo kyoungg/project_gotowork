@@ -40,4 +40,10 @@ export default Layout;
 
 const Highschool = styled.div`
   font-family: "HakgyoansimDunggeunmisoTTF-R";
+
+  & input,
+  button,
+  textarea {
+    font-family: "HakgyoansimDunggeunmisoTTF-R";
+  }
 `;
