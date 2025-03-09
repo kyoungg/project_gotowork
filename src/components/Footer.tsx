@@ -64,8 +64,8 @@ const Footer = () => {
         <AiOutlineCloudSync size="28" />
         <AiOutlineSound size="28" />
         <Clock>
-          <p>오후 5:13</p>
           <p>2025-03-05</p>
+          <p>화 요일</p>
         </Clock>
       </MenuContainer>
       {view && (

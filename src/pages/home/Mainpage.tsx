@@ -175,7 +175,7 @@ const MainPage = () => {
               }}
               ref={nodeRef}
             >
-              <Img src={"/images/redbutton.png"} />
+              <Img src={"/images/욕조.png"} />
               <Name>{"혈욕조"}</Name>
             </Icon>
           </Draggable>
