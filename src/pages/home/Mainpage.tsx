@@ -15,6 +15,8 @@ const MainPage = () => {
   const coin = localStorage.getItem("coin");
   const edition = localStorage.getItem("edition");
   const isfake = localStorage.getItem("isfake");
+  const train = localStorage.getItem("train");
+  // const quizShow = localStorage.getItem("quizShow");
 
   const [play] = useSound("/sounds/Cat Mew 3.mp3");
 
@@ -66,6 +68,11 @@ const MainPage = () => {
 
   const handleOnDrag = () => {
     setIsDragging(true); // 드래그 중에는 드래그 state를 true로 전환한다.
+  };
+
+  const onTrainClick = async () => {
+    const result = await confirmComp(`목포행 기차다. \n 누를까?`);
+    return result && navigate("/tamra");
   };
 
   const handleStopDrag = () => {
@@ -197,6 +204,26 @@ const MainPage = () => {
             >
               <Img src={"/images/spellbook.png"} />
               <Name>{"Necronomicon"}</Name>
+            </Icon>
+          </Draggable>
+        )}
+        {train && (
+          <Draggable
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            nodeRef={nodeRef}
+            onDrag={() => handleOnDrag()} // 드래그 시 실행되는 부분
+            onStop={handleStopDrag} // 드롭 시 실행되는 부분
+          >
+            <Icon
+              onClick={() => {
+                if (isDragging) return;
+                onTrainClick();
+              }}
+              ref={nodeRef}
+            >
+              <Img src={"/images/지하철.png"} />
+              <Name>{"목포행"}</Name>
             </Icon>
           </Draggable>
         )}
