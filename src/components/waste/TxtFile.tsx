@@ -35,7 +35,25 @@ const TxtFile = ({ onClose }: FileProps) => {
           <MiddleBtn>도움말(H)</MiddleBtn>
         </MiddleContainer>
         <BottomContainer>
-          <Text></Text>
+          <TextContainer>
+            <Text>
+              <br />이 모든 건 우리의 졸업식날 일어났다.
+              <br />
+              <br />
+              <br />
+              <br />
+              ₩ub124₩uac00₩u0020₩uc774₩u0020₩uae00₩uc744₩u0020₩uc77d₩u
+              b294₩ub2e4₩ub294₩u0020₩uac74₩u0020₩ud3b8₩ubc95₩uc744₩u00
+              20₩uc4f0₩uace0₩u0020₩uc788₩ub2e4₩ub294₩u0020₩ub73b₩uc774
+              ₩ub2e4₩u002e₩u0020Wuac10₩ud788₩u0020Wuc55e₩uc73c₩ub85c₩u
+              0020₩uc77c₩uc5b4₩ub0a0₩u0020₩uc77c₩uc744Wu0020₩uc5ff₩ubc
+              f4₩ub824Wuace0₩u0020₩ud55c₩u0020₩ub300₩uac00₩ub97c₩u0020
+              ₩uce58₩ub97c₩u0020₩uac83₩uc774₩ub2e4₩u002e₩u0020₩ubc18₩u
+              b4dc₩uc2dc₩u002e
+              <br />
+              <br />
+            </Text>
+          </TextContainer>
         </BottomContainer>
       </Container>
     </Draggable>
@@ -54,8 +72,8 @@ const Container = styled.div`
   top: 12vh;
   left: 35vh;
 
-  width: 80vh;
-  height: 78vh;
+  width: 71vh;
+  height: 55vh;
 
   background-color: #d4d0c8;
   border: solid #808080 1px;
@@ -139,12 +157,12 @@ const BottomContainer = styled.div`
   background-color: white;
 
   width: 97%;
-  height: 69vh;
+  height: 46vh;
 
   overflow-y: auto;
 `;
 
-const Text = styled.div`
+const TextContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -154,6 +172,8 @@ const Text = styled.div`
   font-size: 20px;
   margin: 15px 0 15px;
 
+  overflow-y: auto;
+
   height: 95%;
   width: 95%;
 
@@ -161,4 +181,12 @@ const Text = styled.div`
   outline: none;
   resize: none;
   word-wrap: break-word;
+`;
+
+const Text = styled.p`
+  line-height: 1.3;
+  white-space: normal;
+  & span {
+    text-decoration: line-through;
+  }
 `;
