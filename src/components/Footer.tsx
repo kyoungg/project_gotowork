@@ -1,12 +1,12 @@
 import styled from "styled-components";
 import { useContext, useEffect, useRef, useState } from "react";
-import { MdLockOutline, MdOutlineBroadcastOnHome } from "react-icons/md";
-import { AiOutlineCloudSync } from "react-icons/ai";
-import { IoIosArrowUp } from "react-icons/io";
-import { AiOutlineSound } from "react-icons/ai";
+import { MdLockOutline } from "react-icons/md";
 import { GrPower, GrPowerReset } from "react-icons/gr";
-import { FaRegMoon } from "react-icons/fa";
+import { FaKey } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { FaSchool } from "react-icons/fa";
+import { MdCleaningServices } from "react-icons/md";
+import { TbMoodKidFilled } from "react-icons/tb";
 
 import AlertContext from "./alert/alertContext";
 import ConfirmContext from "./confirm/confirmContext";
@@ -14,6 +14,10 @@ import ConfirmContext from "./confirm/confirmContext";
 const Footer = () => {
   const navigate = useNavigate();
   const [view, setView] = useState(false);
+
+  const noname = localStorage.getItem("noname");
+  const hangman = localStorage.getItem("Qterw-B-191");
+  const highSchool = localStorage.getItem("Qterw-()-62");
 
   const powerRef = useRef<HTMLDivElement | null>(null);
   const { alert: alertComp } = useContext(AlertContext);
@@ -59,10 +63,11 @@ const Footer = () => {
         시작
       </StartBtn>
       <MenuContainer>
-        <IoIosArrowUp size="28" />
-        <MdOutlineBroadcastOnHome size="28" />
-        <AiOutlineCloudSync size="28" />
-        <AiOutlineSound size="28" />
+        <IconContainer>
+          {highSchool && <FaSchool size="28" />}
+          {noname && <MdCleaningServices size="28" />}
+          {hangman && <TbMoodKidFilled size="28" />}
+        </IconContainer>
         <Clock>
           <p>2025-03-05</p>
           <p>화 요일</p>
@@ -75,8 +80,8 @@ const Footer = () => {
             <BtnText>잠금</BtnText>
           </PowerBtn>
           <PowerBtn>
-            <FaRegMoon />
-            <BtnText onClick={() => onEndBtnClick()}>절전</BtnText>
+            <FaKey />
+            <BtnText onClick={() => onEndBtnClick()}>힌트</BtnText>
           </PowerBtn>
           <PowerBtn onClick={() => onEndBtnClick()}>
             <GrPower />
@@ -187,4 +192,9 @@ const PowerBtn = styled.div`
 
 const BtnText = styled.p`
   margin-left: 5px;
+`;
+
+const IconContainer = styled.div`
+  width: 80px;
+  display: flex;
 `;

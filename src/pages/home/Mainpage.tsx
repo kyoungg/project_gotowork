@@ -155,7 +155,7 @@ const MainPage = () => {
               }}
               ref={nodeRef}
             >
-              <Img src={"/images/coin.png"} />
+              <CoinImg src={"/images/coin.png"} />
               <Name>{"은화뱀"}</Name>
             </Icon>
           </Draggable>
@@ -232,7 +232,7 @@ const Icon = styled.li`
 
   width: 80px;
   height: 80px;
-  margin: 7px;
+  margin: 8px;
 
   cursor: pointer;
 `;
@@ -253,4 +253,10 @@ const Name = styled.div`
   margin-top: 2px;
 
   width: 100%;
+`;
+
+const CoinImg = styled.img`
+  height: 55px;
+  width: 55px;
+  padding-bottom: 5px;
 `;
