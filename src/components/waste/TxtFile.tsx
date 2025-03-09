@@ -1,7 +1,9 @@
-import { useRef } from "react";
+import { useContext, useEffect, useRef } from "react";
 import Draggable from "react-draggable";
 import { IoMdClose } from "react-icons/io";
 import styled from "styled-components";
+
+import AlertContext from "../alert/alertContext";
 
 interface FileProps {
   onClose: () => void;
@@ -9,6 +11,20 @@ interface FileProps {
 
 const TxtFile = ({ onClose }: FileProps) => {
   const nodeRef = useRef(null);
+  const { alert: alertComp } = useContext(AlertContext);
+
+  useEffect(() => {
+    const timer = setTimeout(async () => {
+      localStorage.setItem("Qterw-()-62", "세광공업고등학교");
+
+      const result = await alertComp("파일을 열 수 없습니다.");
+      if (result) {
+        window.location.reload();
+      }
+    }, 1500);
+
+    return () => clearTimeout(timer); // 언마운트 시 타이머 정리
+  }, [alertComp]);
 
   return (
     <Draggable
@@ -37,10 +53,17 @@ const TxtFile = ({ onClose }: FileProps) => {
         <BottomContainer>
           <TextContainer>
             <Text>
+              <br />
+              <br />
+              <br />
               <br />이 모든 건 우리의 졸업식날 일어났다.
               <br />
               <br />
+              <br /> <br /> <br />
+              <br /> <br />
               <br />
+              <br /> <br /> <br /> <br />
+              <br /> <br />
               <br />
               ₩ub124₩uac00₩u0020₩uc774₩u0020₩uae00₩uc744₩u0020₩uc77d₩u
               b294₩ub2e4₩ub294₩u0020₩uac74₩u0020₩ud3b8₩ubc95₩uc744₩u00
@@ -72,7 +95,7 @@ const Container = styled.div`
   top: 12vh;
   left: 35vh;
 
-  width: 71vh;
+  width: 72vh;
   height: 55vh;
 
   background-color: #d4d0c8;

@@ -15,6 +15,7 @@ const EducatuonFile = ({ onClose }: FileProps) => {
 
   const onBtnClick = async () => {
     const result = await alertComp(`신 규 선 생 님 이 네 !`);
+    localStorage.setItem("Qterw-B-191", "hangman");
     return result && window.location.reload();
   };
 
