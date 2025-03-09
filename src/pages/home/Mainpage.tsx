@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { useContext, useRef, useState } from "react";
 import Draggable from "react-draggable";
+import useSound from "use-sound";
 
 import data from "../../assets/data/icon";
 import ConfirmContext from "../../components/confirm/confirmContext";
@@ -14,6 +15,8 @@ const MainPage = () => {
   const coin = localStorage.getItem("coin");
   const edition = localStorage.getItem("edition");
   const isfake = localStorage.getItem("isfake");
+
+  const [play] = useSound("/sounds/Cat Mew 3.mp3");
 
   const { confirm: confirmComp } = useContext(ConfirmContext);
   const { alert: alertComp } = useContext(AlertContext);
@@ -44,6 +47,16 @@ const MainPage = () => {
 
   const onNothingClick = async () => {
     await alertComp(`딴짓 할 때가 아니야!`);
+  };
+
+  const onCoinClick = async () => {
+    await alertComp(`스스로 꼬리를 물고 있는 \n뱀의 그림이 새겨져 있다.`);
+  };
+
+  const onBathClick = async () => {
+    await alertComp(
+      `[젊음의 욕조-풋 마사지 에디션] \n10년 무상 A/S가 가능하다. `
+    );
   };
 
   const onMemoClick = async () => {
@@ -138,7 +151,7 @@ const MainPage = () => {
             <Icon
               onClick={() => {
                 if (isDragging) return;
-                onWehelpClick();
+                onCoinClick();
               }}
               ref={nodeRef}
             >
@@ -158,7 +171,7 @@ const MainPage = () => {
             <Icon
               onClick={() => {
                 if (isDragging) return;
-                onWehelpClick();
+                onBathClick();
               }}
               ref={nodeRef}
             >
@@ -178,7 +191,7 @@ const MainPage = () => {
             <Icon
               onClick={() => {
                 if (isDragging) return;
-                onWehelpClick();
+                play();
               }}
               ref={nodeRef}
             >
