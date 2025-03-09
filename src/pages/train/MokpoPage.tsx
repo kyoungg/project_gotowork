@@ -1,18 +1,25 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { IoMdClose } from "react-icons/io";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 
 import AlertContext from "../../components/alert/alertContext";
 
 const MokpoPage = () => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const { alert: alertComp } = useContext(AlertContext);
 
   const onCloseBtnClick = async () => {
     await alertComp(`내릴 수 없다`);
   };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      navigate("/train/tamra");
+    }, 15500);
+    return () => clearTimeout(timer);
+  }, [navigate]);
 
   return (
     <Background>
@@ -183,10 +190,10 @@ const Blink = keyframes`
   0% {
     opacity: 0;
   }
-  20% {
+  15% {
     opacity: 1;
   }
-  80% {
+  95% {
     opacity: 1;
   }
   100% {
@@ -218,7 +225,7 @@ const FadeinText = styled.p`
   color: #7800f7;
   font-size: 120px;
 
-  animation: ${Blink} 4s 7s forwards;
+  animation: ${Blink} 5s 6s forwards;
 `;
 
 const EndText = styled.p`

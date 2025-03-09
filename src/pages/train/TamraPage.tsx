@@ -53,7 +53,7 @@ const Background = styled.div`
   background-color: black;
 
   width: 100%;
-  min-height: 93vh;
+  min-height: 100vh;
 `;
 
 const TopContainer = styled.div`

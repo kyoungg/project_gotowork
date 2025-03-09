@@ -31,7 +31,6 @@ const router = createBrowserRouter([
       },
       { path: "waste", element: <WastePage /> },
       { path: "train/mokpo", element: <MokpoPage /> },
-      { path: "train/tamra", element: <TamraPage /> },
       { path: "daydream", element: <DaydreamPage /> },
       { path: "daydream/point", element: <DaydreamPointPage /> },
       { path: "daydream/shop", element: <DaydreamShopPage /> },
@@ -40,6 +39,7 @@ const router = createBrowserRouter([
       { path: "spaceshop/delivery", element: <SpaceShopDeliveryPage /> },
     ],
   },
+  { path: "train/tamra", element: <TamraPage /> },
 ]);
 
 export default function App() {
