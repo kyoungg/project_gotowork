@@ -9,6 +9,10 @@ import ConfirmContext from "../../components/confirm/confirmContext";
 import AlertContext from "../../components/alert/alertContext";
 import MemoContext from "../../components/memo/memoContext";
 
+interface BackgroundProps {
+  bgImage?: string | null;
+}
+
 const MainPage = () => {
   const navigate = useNavigate();
   const weHelp = localStorage.getItem("weHelp");
@@ -16,6 +20,7 @@ const MainPage = () => {
   const edition = localStorage.getItem("edition");
   const isfake = localStorage.getItem("isfake");
   const train = localStorage.getItem("train");
+  const trickster = localStorage.getItem("trickster");
   // const quizShow = localStorage.getItem("quizShow");
 
   const [play] = useSound("/sounds/Cat Mew 3.mp3");
@@ -26,6 +31,8 @@ const MainPage = () => {
 
   const [isDragging, setIsDragging] = useState(false);
   const nodeRef = useRef(null);
+
+  const bgImage = trickster === "KC" ? "/images/바다.jpg" : null;
 
   const onWehelpClick = async () => {
     if (isDragging) return;
@@ -83,7 +90,7 @@ const MainPage = () => {
   };
 
   return (
-    <Background>
+    <Background bgImage={bgImage}>
       <IconList>
         {data.map((icon) => {
           return (
@@ -234,11 +241,14 @@ const MainPage = () => {
 
 export default MainPage;
 
-const Background = styled.div`
+const Background = styled.div<BackgroundProps>`
   background-color: #245c8d;
 
   width: 100%;
-  min-height: 93vh;
+  min-height: 94vh;
+
+  background: ${({ bgImage }) =>
+    bgImage ? `url(${bgImage}) no-repeat center center/cover` : "none"};
 `;
 
 const IconList = styled.ul`

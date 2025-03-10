@@ -7,8 +7,9 @@ import NothingLayout from "./layout/NothingLayout";
 
 const MainPage = lazy(() => import("./pages/home/MainPage"));
 const WastePage = lazy(() => import("./pages/home/WastePage"));
-const TamraPage = lazy(() => import("./pages/train/TamraPage"));
 const MokpoPage = lazy(() => import("./pages/train/MokpoPage"));
+const TamraPage = lazy(() => import("./pages/train/TamraPage"));
+const AltarPage = lazy(() => import("./pages/train/AltarPage"));
 const DaydreamPage = lazy(() => import("./pages/daydream/DaydreamPage"));
 const DaydreamPointPage = lazy(() => import("./pages/daydream/PointPage"));
 const DaydreamShopPage = lazy(() => import("./pages/daydream/ShopPage"));
@@ -44,7 +45,10 @@ const router = createBrowserRouter([
     path: "/",
     element: <NothingLayout />,
     errorElement: <a>im error!</a>,
-    children: [{ path: "train/tamra", element: <TamraPage /> }],
+    children: [
+      { path: "train/tamra", element: <TamraPage /> },
+      { path: "train/altar", element: <AltarPage /> },
+    ],
   },
 ]);
 

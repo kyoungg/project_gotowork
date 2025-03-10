@@ -41,9 +41,18 @@ const SpaceList = () => {
     if (payList.find((item) => item.id === "article05")) {
       localStorage.setItem("coin", "uroboros");
     } //은화뱀
+    if (payList.find((item) => item.id === "article06")) {
+      localStorage.setItem("candleKit", "mystery");
+    } //신비한 양초 키트
     if (payList.find((item) => item.id === "article08")) {
       localStorage.setItem("edition", "foot");
     } //혈욕조
+    if (payList.find((item) => item.id === "article09")) {
+      localStorage.setItem("happyMaker", "analgesic");
+    } //해피 메이커
+    if (payList.find((item) => item.id === "article10")) {
+      localStorage.setItem("candy", "nostalgia");
+    } //노스텔지어 사탕
     if (payList.find((item) => item.id === "article12")) {
       localStorage.setItem("isfake", "haha");
     } //네크로노미콘
@@ -148,7 +157,7 @@ const Left = styled.div`
   flex-direction: column;
   align-items: flex-end;
 
-  width: 47%;
+  width: 48%;
   height: 100%;
 `;
 

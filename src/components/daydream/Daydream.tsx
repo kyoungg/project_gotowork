@@ -86,7 +86,7 @@ const Background = styled.div`
   background-color: #d4d0c8;
 
   width: 100%;
-  min-height: 93vh;
+  min-height: 94vh;
 `;
 
 const TopContainer = styled.div`

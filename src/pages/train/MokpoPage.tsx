@@ -214,7 +214,7 @@ const FadeoutText = styled.p`
   color: #00ff1a;
   font-size: 120px;
 
-  animation: ${changeColor} 6s forwards, ${fadeOut} 5s forwards;
+  animation: ${changeColor} 6s forwards, ${fadeOut} 2s 5s forwards;
 `;
 
 const FadeinText = styled.p`

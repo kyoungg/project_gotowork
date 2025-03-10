@@ -14,7 +14,7 @@ const TipFile = ({ onClose }: FileProps) => {
   const { alert: alertComp } = useContext(AlertContext);
 
   const onBtnClick = async () => {
-    const result = await alertComp(`..우리는 무사히 청소를 마쳤다!`);
+    const result = await alertComp(`... 무사히 청소를 마쳤다!`);
     localStorage.setItem("noname", "이름님");
     return result && window.location.reload();
   };
@@ -126,13 +126,15 @@ const TipFile = ({ onClose }: FileProps) => {
               <br /> 조금 시간을 두고 읽는 걸 추천함. <br />
               <br />
               <WhiteText>
-                <p>끼이이이이익</p>
+                <p> </p>
               </WhiteText>
               <br />
               13. 어? 문이 열렸어?
               <br />
               ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ
               <WhiteText>
+                어떻게 알았어? 어떻게 알았어? 어떻게 알았어? 어떻게 알았어?
+                어떻게 알았어? 어떻게 알았어? 어떻게 알았어? 어떻게 알았어?
                 어떻게 알았어? 어떻게 알았어? 어떻게 알았어? 어떻게 알았어?
                 어떻게 알았어? 어떻게 알았어? 어떻게 알았어? 어떻게 알았어?
                 어떻게 알았어? 어떻게 알았어? 어떻게 알았어? 어떻게 알았어?
@@ -290,7 +292,7 @@ const WhiteText = styled.p`
   }
 
   & button {
-    font-size: 36px;
+    font-size: 60px;
     border: solid white 2px;
     background-color: white;
     color: white;

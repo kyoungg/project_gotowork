@@ -70,7 +70,7 @@ const Background = styled.div`
   background-color: #d4d0c8;
 
   width: 100%;
-  min-height: 93vh;
+  min-height: 94vh;
 `;
 
 const TopContainer = styled.div`
@@ -136,7 +136,7 @@ const BottomContainer = styled.div`
   background-color: white;
 
   width: 98%;
-  height: 84vh;
+  height: 86vh;
 
   border: solid #acacac 1px;
 `;

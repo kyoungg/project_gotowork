@@ -1,11 +1,11 @@
 import { IoMdClose } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
-import AlertContext from "../../components/alert/alertContext";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 
-const TamraPage = () => {
-  const [showBtn, setShowBtn] = useState(false);
+import AlertContext from "../../components/alert/alertContext";
+
+const AltarPage = () => {
   const navigate = useNavigate();
 
   const { alert: alertComp } = useContext(AlertContext);
@@ -16,12 +16,24 @@ const TamraPage = () => {
     );
   };
 
+  const onFirstClick = async () => {
+    const result = await alertComp(`공양물이 왔다`);
+    return result && onEndClick();
+  };
+
+  const onEndClick = async () => {
+    const result = await alertComp(`뱃길을 열어라`);
+    localStorage.setItem("trickster", "KC");
+    return result && navigate("/");
+  };
+
   useEffect(() => {
     const timer = setTimeout(() => {
-      setShowBtn(true);
-    }, 13000); // 12초 후 실행
+      onFirstClick();
+    }, 23500); // 12초 후 실행
 
     return () => clearTimeout(timer);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -39,31 +51,19 @@ const TamraPage = () => {
       <MiddleContainer></MiddleContainer>
       <BottomContainer>
         <TextContainer>
-          <Text>
-            탐라에 도착하고 싶은 자여 제물을 공양해라 탐라에 도착하고 싶은 자여
-            제물을 공양해라 탐라에 도착하고 싶은 자여 제물을 공양해라 탐라에
-            도착하고 싶은 자여 제물을 공양해라 탐라에 도착하고 싶은 자여 제물을
-            공양해라 탐라에 도착하고 싶은 자여 제물을 공양해라 탐라에 도착하고
-            싶은 자여 제물을 공양해라 탐라에 도착하고 싶은 자여 제물을 공양해라
-            탐라에 도착하고 싶은 자여 제물을 공양해라 탐라에 도착하고 싶은 자여
-            제물을 공양해라
-          </Text>
-          {showBtn && (
-            <RedText
-              onClick={() => {
-                navigate("/train/altar");
-              }}
-            >
-              첫 번째 재단 진입
-            </RedText>
-          )}
+          <FiveText>남은 거리 : 5</FiveText>
+          <FourText>남은 거리 : 4</FourText>
+          <ThreeText>남은 거리 : 3</ThreeText>
+          <TwoText>남은 거리 : 2</TwoText>
+          <OneText>남은 거리 : 1</OneText>
+          <EndText>0</EndText>
         </TextContainer>
       </BottomContainer>
     </Background>
   );
 };
 
-export default TamraPage;
+export default AltarPage;
 
 const Background = styled.div`
   display: flex;
@@ -138,17 +138,32 @@ const BottomContainer = styled.div`
   height: 84vh;
 `;
 
-const moving = keyframes`
-  0% {
-    transform: translateX(0%);
+const fadeOut = keyframes`
+  85% {
+    opacity: 1;
   }
   100% {
-    transform: translateX(-50%);
+    opacity: 0;
   }
 `;
 
-const fadeOut = keyframes`
+const fadeIn = keyframes`
   0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`;
+
+const Blink = keyframes`
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  85% {
     opacity: 1;
   }
   100% {
@@ -169,16 +184,61 @@ const TextContainer = styled.div`
   align-items: center;
 `;
 
-const Text = styled.p`
-  display: inline-block;
-  animation: ${moving} 50s linear infinite, ${fadeOut} 1s 11s forwards;
-`;
-
-const RedText = styled.p`
+const FiveText = styled.p`
   position: absolute;
 
   color: #ef0000;
   font-size: 120px;
 
-  cursor: pointer;
+  animation: ${fadeOut} 2s 2s forwards;
+`;
+
+const FourText = styled.p`
+  position: absolute;
+  opacity: 0;
+
+  color: #ef0000;
+  font-size: 120px;
+
+  animation: ${Blink} 4s 4s forwards;
+`;
+
+const ThreeText = styled.p`
+  position: absolute;
+  opacity: 0;
+
+  color: #ef0000;
+  font-size: 120px;
+
+  animation: ${Blink} 4s 8s forwards;
+`;
+
+const TwoText = styled.p`
+  position: absolute;
+  opacity: 0;
+
+  color: #ef0000;
+  font-size: 120px;
+
+  animation: ${Blink} 4s 12s forwards;
+`;
+
+const OneText = styled.p`
+  position: absolute;
+  opacity: 0;
+
+  color: #ef0000;
+  font-size: 120px;
+
+  animation: ${Blink} 4s 16s forwards;
+`;
+
+const EndText = styled.p`
+  position: absolute;
+  opacity: 0;
+
+  color: #ef0000;
+  font-size: 120px;
+
+  animation: ${fadeIn} 2s 20s forwards;
 `;

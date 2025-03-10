@@ -21,7 +21,7 @@ const TxtFile = ({ onClose }: FileProps) => {
       if (result) {
         window.location.reload();
       }
-    }, 1500);
+    }, 1700);
 
     return () => clearTimeout(timer); // 언마운트 시 타이머 정리
   }, [alertComp]);

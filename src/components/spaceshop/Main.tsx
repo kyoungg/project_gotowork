@@ -83,7 +83,7 @@ const moving = keyframes`
   }
   30%{
     top: 40%;
-    left: 85%;
+    left: 80%;
     transform : rotate(360deg)
   }
   60%{
@@ -103,5 +103,5 @@ const Ufo = styled.img`
   height: 200px;
 
   position: absolute;
-  animation: ${moving} 7s 1s linear alternate infinite;
+  animation: ${moving} 7s linear alternate infinite;
 `;
