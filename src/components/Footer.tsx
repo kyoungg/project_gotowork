@@ -20,11 +20,18 @@ const Footer = () => {
   const [view, setView] = useState(false);
   const [calendar, setCalendar] = useState(false);
 
+  //푸터 메뉴바 옵션
   const noname = localStorage.getItem("noname");
   const hangman = localStorage.getItem("Qterw-B-191");
   const highSchool = localStorage.getItem("Qterw-()-62");
+
+  //달력 구현용
   const train = localStorage.getItem("train");
   const quizShow = localStorage.getItem("quizShow");
+
+  //착한친구 구현용
+  const doll = localStorage.getItem("doll");
+  const coin = localStorage.getItem("coin");
 
   const powerRef = useRef<HTMLDivElement | null>(null);
   const calendarRef = useRef<HTMLDivElement | null>(null);
@@ -59,18 +66,17 @@ const Footer = () => {
     const currentMonth = displayDate.getMonth(); // 월 (0: 1월, 1: 2월, ..., 11: 12월)
     const currentDate = displayDate.getDate(); // 날짜
 
-    if (quizShow === "tuesday") return;
-    if (train === "tamra") return;
-
-    // 화요일 (2)이고 1월 2일인 경우
+    //1월 2일인 경우
     if (currentMonth === 0 && currentDate === 2) {
+      if (train === "tamra") return;
       localStorage.setItem("train", "tamra");
       window.location.reload();
     }
 
     if (currentDay === 2) {
+      if (quizShow === "tuesday") return;
       localStorage.setItem("quizShow", "tuesday");
-      // window.location.reload();
+      window.location.reload();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [date]); // date가 변경될 때마다 실행
@@ -155,6 +161,7 @@ const Footer = () => {
           </PowerBtn>
         </ResetContainer>
       )}
+      {doll && coin && <Friend src="/images/착한친구.png" />}
     </Background>
   );
 };
@@ -314,4 +321,12 @@ const StyledCalendar = styled(Calendar)`
     color: white;
     font-weight: bold;
   }
+`;
+
+const Friend = styled.img`
+  position: absolute;
+  width: 88px;
+
+  bottom: 1.8%;
+  right: 35%;
 `;

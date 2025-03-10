@@ -1,8 +1,17 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { useContext } from "react";
+
+import AlertContext from "../alert/alertContext";
 
 const Nav = () => {
   const navigate = useNavigate();
+
+  const { alert: alertComp } = useContext(AlertContext);
+
+  const onShopClick = async () => {
+    await alertComp(`지금 상점에선 확인 할 게 없다.`);
+  };
 
   return (
     <>
@@ -18,7 +27,8 @@ const Nav = () => {
         <Li
           key="shop01"
           onClick={() => {
-            navigate("/daydream/shop");
+            // navigate("/daydream/shop");
+            onShopClick();
           }}
         >
           - 포인트 상점

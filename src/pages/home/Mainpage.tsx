@@ -31,7 +31,7 @@ const MainPage = () => {
 
   //브라운
   const quizShow = localStorage.getItem("quizShow"); //"tuesday"
-  const doll = localStorage.getItem("quizShow"); //"rabbit"
+  const doll = localStorage.getItem("doll"); //"rabbit"
 
   const [play] = useSound("/sounds/Cat Mew 3.mp3");
 

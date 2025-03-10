@@ -59,6 +59,8 @@ const Background = styled.div`
 
   width: 100%;
   min-height: 94vh;
+
+  font-family: "DungGeunMo";
 `;
 
 const TopContainer = styled.div`

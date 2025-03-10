@@ -148,7 +148,7 @@ const moving = keyframes`
 `;
 
 const fadeOut = keyframes`
-  0% {
+  75% {
     opacity: 1;
   }
   100% {
