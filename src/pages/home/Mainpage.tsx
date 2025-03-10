@@ -30,7 +30,8 @@ const MainPage = () => {
   const trickster = localStorage.getItem("trickster"); //"KC"
 
   //브라운
-  const quizShow = localStorage.getItem("quizShow");
+  const quizShow = localStorage.getItem("quizShow"); //"tuesday"
+  const doll = localStorage.getItem("quizShow"); //"rabbit"
 
   const [play] = useSound("/sounds/Cat Mew 3.mp3");
 
@@ -83,6 +84,17 @@ const MainPage = () => {
 
   const onHappyMakerClick = async () => {
     await alertComp(`빠르고 편안한 샷\n당신의 고통과 작별하세요!`);
+  };
+
+  const onDollEndClick = async () => {
+    await alertComp(`언제나.`);
+  };
+
+  const onDollClick = async () => {
+    const result = await alertComp(
+      `당신의 귀여운 동물 인형이에요. \n언제나 함께 다니며 \n당신을 지켜줄 거예요.`
+    );
+    return result && onDollEndClick();
   };
 
   const onCandyClick = async () => {
@@ -189,6 +201,26 @@ const MainPage = () => {
               >
                 <Img src={"/images/redbutton.png"} />
                 <Name>{"우리가 도움!"}</Name>
+              </Icon>
+            </Draggable>
+          )}
+          {doll && ( //착한친구
+            <Draggable
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-ignore
+              nodeRef={nodeRef}
+              onDrag={() => handleOnDrag()}
+              onStop={handleStopDrag}
+            >
+              <Icon
+                onClick={() => {
+                  if (isDragging) return;
+                  onDollClick();
+                }}
+                ref={nodeRef}
+              >
+                <Img src={"/images/토끼.png"} />
+                <Name>{"착한친구"}</Name>
               </Icon>
             </Draggable>
           )}
