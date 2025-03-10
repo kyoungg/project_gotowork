@@ -15,12 +15,20 @@ interface BackgroundProps {
 
 const MainPage = () => {
   const navigate = useNavigate();
-  const weHelp = localStorage.getItem("weHelp");
-  const coin = localStorage.getItem("coin");
-  const edition = localStorage.getItem("edition");
-  const isfake = localStorage.getItem("isfake");
-  const train = localStorage.getItem("train");
-  const trickster = localStorage.getItem("trickster");
+
+  //우주쇼핑몰
+  const weHelp = localStorage.getItem("weHelp"); //우리가 도움! "change"
+  const coin = localStorage.getItem("coin"); //은화뱀 "uroboros"
+  const candleKit = localStorage.getItem("candleKit"); //신비한 양초 키트 "mystery"
+  const edition = localStorage.getItem("edition"); //혈욕조 "foot"
+  const happyMaker = localStorage.getItem("happyMaker"); //해피 메이커 "analgesic"
+  const candy = localStorage.getItem("candy"); //노스텔지어 사탕 "nostalgia"
+  const isfake = localStorage.getItem("isfake"); //네크로노미콘 "haha"
+
+  //탐라
+  const train = localStorage.getItem("train"); //"tamra"
+  const trickster = localStorage.getItem("trickster"); //"KC"
+
   // const quizShow = localStorage.getItem("quizShow");
 
   const [play] = useSound("/sounds/Cat Mew 3.mp3");
@@ -32,7 +40,7 @@ const MainPage = () => {
   const [isDragging, setIsDragging] = useState(false);
   const nodeRef = useRef(null);
 
-  const bgImage = trickster === "KC" ? "/images/바다.jpg" : null;
+  const bgImage = trickster === "KC" ? "/images/바다.jpg" : undefined;
 
   const onWehelpClick = async () => {
     if (isDragging) return;
@@ -68,6 +76,34 @@ const MainPage = () => {
     );
   };
 
+  const onCandleClick = async () => {
+    await alertComp(`[권장 사용 인원: 3인]\n혼자서는 사용할 수 없다.`);
+  };
+
+  const onHappyMakerClick = async () => {
+    await alertComp(`빠르고 편안한 샷\n당신의 고통과 작별하세요!`);
+  };
+
+  const onCandyClick = async () => {
+    const result = await alertComp(
+      `따스한 그시절,\n마법의 사탕!\n노스텔지어 캔-디\n사탕을 입에서 굴릴 때\n되살아나는 옛 추억!`
+    );
+    return result && onResetBtnClick();
+  };
+
+  const handleReset = async () => {
+    localStorage.clear();
+    navigate("/");
+    window.location.reload();
+  };
+
+  const onResetBtnClick = async () => {
+    const result = await confirmComp(
+      `...먹어볼까?\n(진행 상황이 초기화 됩니다)`
+    );
+    return result && handleReset();
+  };
+
   const onMemoClick = async () => {
     if (isDragging) return;
     await memoComp();
@@ -90,165 +126,226 @@ const MainPage = () => {
   };
 
   return (
-    <Background bgImage={bgImage}>
-      <IconList>
-        {data.map((icon) => {
-          return (
+    <>
+      <Background bgImage={bgImage}>
+        <IconList>
+          {data.map((icon) => {
+            return (
+              <Draggable
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
+                nodeRef={nodeRef}
+                onDrag={() => handleOnDrag()} // 드래그 시 실행되는 부분
+                onStop={handleStopDrag} // 드롭 시 실행되는 부분
+                key={icon.name}
+              >
+                <Icon
+                  key={icon.id}
+                  onClick={() => {
+                    if (isDragging) return; // 드래그 중일 때 클릭 무시
+                    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+                    icon.isModal ? onNothingClick() : navigate(icon.path);
+                  }}
+                  ref={nodeRef}
+                >
+                  <Img src={icon.img} />
+                  <Name>{icon.name}</Name>
+                </Icon>
+              </Draggable>
+            );
+          })}
+          <Draggable //메모
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            nodeRef={nodeRef}
+            onDrag={() => handleOnDrag()}
+            onStop={handleStopDrag}
+          >
+            <Icon
+              onClick={() => {
+                onMemoClick();
+              }}
+              ref={nodeRef}
+            >
+              <Img src={"/images/교육서.png"} />
+              <Name>{"이자헌 조-..."}</Name>
+            </Icon>
+          </Draggable>
+          {weHelp && ( //우리가 도움
             <Draggable
               // eslint-disable-next-line @typescript-eslint/ban-ts-comment
               // @ts-ignore
               nodeRef={nodeRef}
-              onDrag={() => handleOnDrag()} // 드래그 시 실행되는 부분
-              onStop={handleStopDrag} // 드롭 시 실행되는 부분
-              key={icon.name}
+              onDrag={() => handleOnDrag()}
+              onStop={handleStopDrag}
             >
               <Icon
-                key={icon.id}
                 onClick={() => {
-                  if (isDragging) return; // 드래그 중일 때 클릭 무시
-                  // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-                  icon.isModal ? onNothingClick() : navigate(icon.path);
+                  if (isDragging) return;
+                  onWehelpClick();
                 }}
                 ref={nodeRef}
               >
-                <Img src={icon.img} />
-                <Name>{icon.name}</Name>
+                <Img src={"/images/redbutton.png"} />
+                <Name>{"우리가 도움!"}</Name>
               </Icon>
             </Draggable>
-          );
-        })}
-        <Draggable
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore
-          nodeRef={nodeRef}
-          onDrag={() => handleOnDrag()} // 드래그 시 실행되는 부분
-          onStop={handleStopDrag} // 드롭 시 실행되는 부분
-        >
-          <Icon
-            onClick={() => {
-              onMemoClick();
-            }}
-            ref={nodeRef}
-          >
-            <Img src={"/images/교육서.png"} />
-            <Name>{"이자헌 조-..."}</Name>
-          </Icon>
-        </Draggable>
-        {weHelp && (
-          <Draggable
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
-            nodeRef={nodeRef}
-            onDrag={() => handleOnDrag()} // 드래그 시 실행되는 부분
-            onStop={handleStopDrag} // 드롭 시 실행되는 부분
-          >
-            <Icon
-              onClick={() => {
-                if (isDragging) return;
-                onWehelpClick();
-              }}
-              ref={nodeRef}
+          )}
+          {coin && ( //은화뱀
+            <Draggable
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-ignore
+              nodeRef={nodeRef}
+              onDrag={() => handleOnDrag()}
+              onStop={handleStopDrag}
             >
-              <Img src={"/images/redbutton.png"} />
-              <Name>{"우리가 도움!"}</Name>
-            </Icon>
-          </Draggable>
-        )}
-        {coin && (
-          <Draggable
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
-            nodeRef={nodeRef}
-            onDrag={() => handleOnDrag()} // 드래그 시 실행되는 부분
-            onStop={handleStopDrag} // 드롭 시 실행되는 부분
-          >
-            <Icon
-              onClick={() => {
-                if (isDragging) return;
-                onCoinClick();
-              }}
-              ref={nodeRef}
+              <Icon
+                onClick={() => {
+                  if (isDragging) return;
+                  onCoinClick();
+                }}
+                ref={nodeRef}
+              >
+                <WideImg src={"/images/coin.png"} />
+                <Name>{"은화뱀"}</Name>
+              </Icon>
+            </Draggable>
+          )}
+          {candleKit && ( //신비한 양초키트
+            <Draggable
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-ignore
+              nodeRef={nodeRef}
+              onDrag={() => handleOnDrag()}
+              onStop={handleStopDrag}
             >
-              <CoinImg src={"/images/coin.png"} />
-              <Name>{"은화뱀"}</Name>
-            </Icon>
-          </Draggable>
-        )}
-        {edition && (
-          <Draggable
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
-            nodeRef={nodeRef}
-            onDrag={() => handleOnDrag()} // 드래그 시 실행되는 부분
-            onStop={handleStopDrag} // 드롭 시 실행되는 부분
-          >
-            <Icon
-              onClick={() => {
-                if (isDragging) return;
-                onBathClick();
-              }}
-              ref={nodeRef}
+              <Icon
+                onClick={() => {
+                  if (isDragging) return;
+                  onCandleClick();
+                }}
+                ref={nodeRef}
+              >
+                <Img src={"/images/양초.png"} />
+                <Name>{`신비한 양초키트`}</Name>
+              </Icon>
+            </Draggable>
+          )}
+          {edition && ( //혈욕조
+            <Draggable
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-ignore
+              nodeRef={nodeRef}
+              onDrag={() => handleOnDrag()}
+              onStop={handleStopDrag}
             >
-              <Img src={"/images/욕조.png"} />
-              <Name>{"혈욕조"}</Name>
-            </Icon>
-          </Draggable>
-        )}
-        {isfake && (
-          <Draggable
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
-            nodeRef={nodeRef}
-            onDrag={() => handleOnDrag()} // 드래그 시 실행되는 부분
-            onStop={handleStopDrag} // 드롭 시 실행되는 부분
-          >
-            <Icon
-              onClick={() => {
-                if (isDragging) return;
-                play();
-              }}
-              ref={nodeRef}
+              <Icon
+                onClick={() => {
+                  if (isDragging) return;
+                  onBathClick();
+                }}
+                ref={nodeRef}
+              >
+                <Img src={"/images/욕조.png"} />
+                <Name>{"혈욕조"}</Name>
+              </Icon>
+            </Draggable>
+          )}
+          {happyMaker && ( //해피메이커
+            <Draggable
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-ignore
+              nodeRef={nodeRef}
+              onDrag={() => handleOnDrag()}
+              onStop={handleStopDrag}
             >
-              <Img src={"/images/spellbook.png"} />
-              <Name>{"Necronomicon"}</Name>
-            </Icon>
-          </Draggable>
-        )}
-        {train && (
-          <Draggable
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
-            nodeRef={nodeRef}
-            onDrag={() => handleOnDrag()} // 드래그 시 실행되는 부분
-            onStop={handleStopDrag} // 드롭 시 실행되는 부분
-          >
-            <Icon
-              onClick={() => {
-                if (isDragging) return;
-                onTrainClick();
-              }}
-              ref={nodeRef}
+              <Icon
+                onClick={() => {
+                  if (isDragging) return;
+                  onHappyMakerClick();
+                }}
+                ref={nodeRef}
+              >
+                <Img src={"/images/주사기.png"} />
+                <Name>{`해피메이커`}</Name>
+              </Icon>
+            </Draggable>
+          )}
+          {candy && ( //노스텔지어 사탕
+            <Draggable
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-ignore
+              nodeRef={nodeRef}
+              onDrag={() => handleOnDrag()}
+              onStop={handleStopDrag}
             >
-              <Img src={"/images/지하철.png"} />
-              <Name>{"목포행"}</Name>
-            </Icon>
-          </Draggable>
-        )}
-      </IconList>
-    </Background>
+              <Icon
+                onClick={() => {
+                  if (isDragging) return;
+                  onCandyClick();
+                }}
+                ref={nodeRef}
+              >
+                <Img src={"/images/사탕.png"} />
+                <Name>{`노스텔지어 사탕`}</Name>
+              </Icon>
+            </Draggable>
+          )}
+          {isfake && ( //네크로노미콘
+            <Draggable
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-ignore
+              nodeRef={nodeRef}
+              onDrag={() => handleOnDrag()}
+              onStop={handleStopDrag}
+            >
+              <Icon
+                onClick={() => {
+                  if (isDragging) return;
+                  play();
+                }}
+                ref={nodeRef}
+              >
+                <Img src={"/images/spellbook.png"} />
+                <Name>{"Necronomicon"}</Name>
+              </Icon>
+            </Draggable>
+          )}
+          {train && ( //지하철
+            <Draggable
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-ignore
+              nodeRef={nodeRef}
+              onDrag={() => handleOnDrag()}
+              onStop={handleStopDrag}
+            >
+              <Icon
+                onClick={() => {
+                  if (isDragging) return;
+                  onTrainClick();
+                }}
+                ref={nodeRef}
+              >
+                <Img src={"/images/지하철.png"} />
+                <Name>{"목포행"}</Name>
+              </Icon>
+            </Draggable>
+          )}
+        </IconList>
+      </Background>
+    </>
   );
 };
 
 export default MainPage;
 
 const Background = styled.div<BackgroundProps>`
-  background-color: #245c8d;
-
   width: 100%;
   min-height: 94vh;
+  background-color: #245c8d;
 
-  background: ${({ bgImage }) =>
-    bgImage ? `url(${bgImage}) no-repeat center center/cover` : "none"};
+  ${({ bgImage }) =>
+    bgImage && `background: url(${bgImage}) no-repeat center center/cover;`}
 `;
 
 const IconList = styled.ul`
@@ -259,7 +356,7 @@ const IconList = styled.ul`
   flex-direction: column;
 
   max-height: 100%;
-  height: 93vh;
+  height: 94vh;
 `;
 
 const Icon = styled.li`
@@ -279,9 +376,11 @@ const Img = styled.img`
   width: 60px;
 `;
 
-const Name = styled.div`
+const Name = styled.p`
   display: flex;
   justify-content: center;
+
+  word-break: keep-all;
 
   font-size: 16px;
   color: white;
@@ -292,8 +391,9 @@ const Name = styled.div`
   width: 100%;
 `;
 
-const CoinImg = styled.img`
-  height: 55px;
-  width: 55px;
-  padding-bottom: 5px;
+const WideImg = styled.img`
+  height: 56px;
+  width: 60px;
+
+  margin: 2px 0;
 `;
