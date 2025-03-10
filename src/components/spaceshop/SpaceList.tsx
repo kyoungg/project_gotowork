@@ -181,7 +181,7 @@ const Ul = styled.ul`
 
 const Li = styled.li`
   padding: 15px 10px;
-  font-size: 24px;
+  font-size: 21px;
 
   cursor: pointer;
 `;
