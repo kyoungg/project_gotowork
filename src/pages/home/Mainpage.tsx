@@ -29,7 +29,8 @@ const MainPage = () => {
   const train = localStorage.getItem("train"); //"tamra"
   const trickster = localStorage.getItem("trickster"); //"KC"
 
-  // const quizShow = localStorage.getItem("quizShow");
+  //브라운
+  const quizShow = localStorage.getItem("quizShow");
 
   const [play] = useSound("/sounds/Cat Mew 3.mp3");
 
@@ -206,7 +207,7 @@ const MainPage = () => {
                 }}
                 ref={nodeRef}
               >
-                <WideImg src={"/images/coin.png"} />
+                <Img src={"/images/coin.png"} />
                 <Name>{"은화뱀"}</Name>
               </Icon>
             </Draggable>
@@ -331,6 +332,7 @@ const MainPage = () => {
               </Icon>
             </Draggable>
           )}
+          {quizShow && <></>}
         </IconList>
       </Background>
     </>
@@ -365,7 +367,7 @@ const Icon = styled.li`
   align-items: center;
 
   width: 80px;
-  height: 80px;
+  height: 85px;
   margin: 8px;
 
   cursor: pointer;
@@ -389,11 +391,4 @@ const Name = styled.p`
   margin-top: 2px;
 
   width: 100%;
-`;
-
-const WideImg = styled.img`
-  height: 56px;
-  width: 60px;
-
-  margin: 2px 0;
 `;

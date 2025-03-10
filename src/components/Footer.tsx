@@ -193,14 +193,14 @@ const StartBtn = styled.div`
 const MenuContainer = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: flex-start;
 
   background-color: #c2c5b0;
   border: solid #9e9d90 2px;
   box-shadow: 1px 1px 2px 2px gray inset;
 
   width: 231px;
-  height: 35px;
+  height: 36px;
   margin-right: 15px;
 `;
 
@@ -210,15 +210,20 @@ const Img = styled.img`
 `;
 
 const Clock = styled.div`
+  position: absolute;
+  right: 3vh;
+
   display: flex;
   flex-direction: column;
   align-items: flex-end;
 
-  width: 90px;
+  width: 100px;
   height: 30px;
-  padding-left: 10px;
+  margin-left: 10px;
 
   font-size: 16px;
+
+  cursor: pointer;
 `;
 
 const ResetContainer = styled.div`
@@ -258,19 +263,24 @@ const BtnText = styled.p`
 const IconContainer = styled.div`
   width: 80px;
   display: flex;
+
+  padding-left: 8px;
 `;
 
 const CalendarWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  width: 1px;
 `;
 
 // Calendar에 대한 스타일 적용
 const StyledCalendar = styled(Calendar)`
   position: absolute;
+
   right: 1vh;
-  bottom: 8vh;
+  bottom: 7vh;
 
   height: 312px;
   background: #d4d0c8;

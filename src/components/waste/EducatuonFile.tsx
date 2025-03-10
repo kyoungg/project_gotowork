@@ -47,6 +47,7 @@ const EducatuonFile = ({ onClose }: FileProps) => {
           <TextContainer>
             <Text>
               <br />
+              <br />
               <p> ■■■ 선생님, 들어보세요. </p>
               <p>나는 교육서를 다 읽었어요!</p>
               <br />
@@ -60,6 +61,8 @@ const EducatuonFile = ({ onClose }: FileProps) => {
               모두가 규칙을 지키며 보육하지 완벽한 선생 님이야 모두가 규칙을
               지켜 계속 끝없이 이곳에서 교육서를 다 읽으면 우리 ■■부속유치원에
               다니면 ■■■ 선생님도 곧 나처럼 될 거야 이제 교육서만 읽어 빨리
+              <br />
+              <br />
               <br />
               <br />
               <br />
@@ -106,7 +109,7 @@ const Container = styled.div`
   top: 12vh;
   left: 35vh;
 
-  width: 80vh;
+  width: 593px;
   height: 78vh;
 
   background-color: #d4d0c8;

@@ -9,7 +9,11 @@ import TipFile from "../../components/waste/TipFile";
 
 const WastePage = () => {
   const [selectedFile, setSelectedFile] = useState<
-    "교육서" | "검은 그늘 속에서" | "야간청소근무팁" | null
+    | "교육서"
+    | "검은 그늘 속에서"
+    | "야간청소근무팁"
+    | "유쾌 테마파크 이용 지침서"
+    | null
   >(null);
   const navigate = useNavigate();
 
@@ -55,6 +59,10 @@ const WastePage = () => {
           <Name>{"야간청소\n근무팁"}</Name>
         </Icon>
         {selectedFile === "야간청소근무팁" && <TipFile onClose={handleClose} />}
+        <Icon onClick={() => setSelectedFile("유쾌 테마파크 이용 지침서")}>
+          <Img src={"/images/교육서.png"} />
+          <Name>{"유쾌 테마파크···"}</Name>
+        </Icon>
       </BottomContainer>
     </Background>
   );
