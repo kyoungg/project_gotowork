@@ -10,8 +10,8 @@ const data = [
     id: "icon02",
     name: "내 컴퓨터",
     img: "images/내컴퓨터.png",
-    path: "modal",
-    isModal: true,
+    path: "/mycomputer",
+    isModal: false,
   },
   {
     id: "icon03",

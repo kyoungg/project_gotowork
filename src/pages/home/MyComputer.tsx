@@ -3,13 +3,12 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { useState } from "react";
 
-import EducatuonFile from "../../components/waste/EducatuonFile";
-import TxtFile from "../../components/waste/TxtFile";
-import TipFile from "../../components/waste/TipFile";
+import GaietyParkFile from "../../components/mycomputer/GaietyParkFile";
+import GaietyParkHelp from "../../components/mycomputer/GaietyParkHelp";
 
-const WastePage = () => {
+const MyComputerPage = () => {
   const [selectedFile, setSelectedFile] = useState<
-    "교육서" | "검은 그늘 속에서" | "야간청소근무팁" | null
+    "유쾌 테마파크!" | "유쾌 테마파크 지침서" | null
   >(null);
   const navigate = useNavigate();
 
@@ -21,8 +20,7 @@ const WastePage = () => {
     <Background>
       <TopContainer>
         <Title>
-          <Logo src="/images/빈창.png" />
-          휴지통
+          <Logo src="/images/내컴퓨터.png" />내 컴퓨터
         </Title>
         <CloseBtn
           onClick={() => {
@@ -34,33 +32,26 @@ const WastePage = () => {
       </TopContainer>
       <MiddleContainer></MiddleContainer>
       <BottomContainer>
-        <Icon onClick={() => setSelectedFile("교육서")}>
-          <Img src={"/images/교육서.png"} />
-          <Name>
-            <p>{"교육서"}</p>
-          </Name>
+        <Icon onClick={() => setSelectedFile("유쾌 테마파크!")}>
+          <Img src={"/images/보드게임.png"} />
+          <Name>{"유쾌 테마파크!"}</Name>
         </Icon>
-        {selectedFile === "교육서" && <EducatuonFile onClose={handleClose} />}
-
-        <Icon onClick={() => setSelectedFile("검은 그늘 속에서")}>
-          <Img src={"/images/txt.png"} />
-          <Name>{"검은 그늘 속에서.txt"}</Name>
-        </Icon>
-        {selectedFile === "검은 그늘 속에서" && (
-          <TxtFile onClose={handleClose} />
+        {selectedFile === "유쾌 테마파크!" && (
+          <GaietyParkFile onClose={handleClose} />
         )}
-
-        <Icon onClick={() => setSelectedFile("야간청소근무팁")}>
+        <Icon onClick={() => setSelectedFile("유쾌 테마파크 지침서")}>
           <Img src={"/images/교육서.png"} />
-          <Name>{"야간청소\n근무팁"}</Name>
+          <Name>{"유쾌 테마파크···"}</Name>
         </Icon>
-        {selectedFile === "야간청소근무팁" && <TipFile onClose={handleClose} />}
+        {selectedFile === "유쾌 테마파크 지침서" && (
+          <GaietyParkHelp onClose={handleClose} />
+        )}
       </BottomContainer>
     </Background>
   );
 };
 
-export default WastePage;
+export default MyComputerPage;
 
 const Background = styled.div`
   display: flex;
