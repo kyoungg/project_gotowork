@@ -63,7 +63,7 @@ const MainPage = () => {
   };
 
   const onNothingClick = async () => {
-    await alertComp(`딴짓 할 때가 아니야!`);
+    await alertComp(`여긴 확인할 게 없다.`);
   };
 
   const onCoinClick = async () => {
