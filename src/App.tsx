@@ -4,8 +4,10 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
 import Layout from "./layout/Layout";
 import NothingLayout from "./layout/NothingLayout";
+import ProtectedRoute from "./assets/routes/ProtectedRoute";
 
 const MainPage = lazy(() => import("./pages/home/MainPage"));
+const MainLoginPage = lazy(() => import("./pages/home/MainLoginPage"));
 const WastePage = lazy(() => import("./pages/home/WastePage"));
 const MyComputerPage = lazy(() => import("./pages/home/MyComputer"));
 const MokpoPage = lazy(() => import("./pages/train/MokpoPage"));
@@ -29,8 +31,13 @@ const router = createBrowserRouter([
     errorElement: <a>im error!</a>,
     children: [
       {
-        index: true,
-        element: <MainPage />,
+        element: <ProtectedRoute />,
+        children: [
+          {
+            index: true,
+            element: <MainPage />,
+          },
+        ],
       },
       { path: "waste", element: <WastePage /> },
       { path: "mycomputer", element: <MyComputerPage /> },
@@ -48,6 +55,7 @@ const router = createBrowserRouter([
     element: <NothingLayout />,
     errorElement: <a>im error!</a>,
     children: [
+      { path: "login", element: <MainLoginPage /> },
       { path: "train/tamra", element: <TamraPage /> },
       { path: "train/altar", element: <AltarPage /> },
     ],

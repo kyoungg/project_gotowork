@@ -82,7 +82,7 @@ const Footer = () => {
   }, [date]); // date가 변경될 때마다 실행
 
   const onEndBtnClick = async () => {
-    await alertComp(`아직 해야 할 게 있다!`);
+    await alertComp(`해야 할 게 있다!`);
   };
 
   const handleReset = async () => {
@@ -92,7 +92,9 @@ const Footer = () => {
   };
 
   const onResetBtnClick = async () => {
-    const result = await confirmComp(`초기화 할까?\n(정말 초기화 됩니다)`);
+    const result = await confirmComp(
+      `다시 시작 할까?\n(진행 상황이 초기화 됩니다)`
+    );
     return result && handleReset();
   };
 
@@ -157,7 +159,7 @@ const Footer = () => {
           </PowerBtn>
           <PowerBtn>
             <GrPowerReset />
-            <BtnText onClick={() => onResetBtnClick()}>초기화</BtnText>
+            <BtnText onClick={() => onResetBtnClick()}>다시 시작</BtnText>
           </PowerBtn>
         </ResetContainer>
       )}
