@@ -35,21 +35,27 @@ const Daydream: React.FC<DaydreamProps> = ({ component, isLogin }) => {
         </CloseBtn>
       </TopContainer>
       <MiddleContainer>
-        <AiOutlineArrowLeft size="36" onClick={() => navigate(-1)} />
-        <AiOutlineArrowRight
-          size="36"
-          color="#898989"
-          onClick={() => {
-            setCount(count + 1);
-            console.log(count);
-          }}
-        />
-        <IoMdRefresh
-          size="36"
-          onClick={() => {
-            window.location.reload();
-          }}
-        />
+        <Btn>
+          <AiOutlineArrowLeft size="36" onClick={() => navigate(-1)} />
+        </Btn>
+        <Btn>
+          <AiOutlineArrowRight
+            size="36"
+            color="#898989"
+            onClick={() => {
+              setCount(count + 1);
+              console.log(count);
+            }}
+          />
+        </Btn>
+        <Btn>
+          <IoMdRefresh
+            size="36"
+            onClick={() => {
+              window.location.reload();
+            }}
+          />
+        </Btn>
         <Url>
           <p>https://www.daydream.com{pathname}</p>
         </Url>
@@ -208,4 +214,8 @@ const SpaceText = styled.div`
   left: 5px;
 
   text-decoration: underline;
+`;
+
+const Btn = styled.div`
+  cursor: pointer;
 `;

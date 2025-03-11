@@ -93,6 +93,10 @@ const Footer = () => {
     window.location.reload();
   };
 
+  const handleHint = () => {
+    window.open("https://posty.pe/svsr3w", "_blank");
+  };
+
   const onLockBtnClick = () => {
     localStorage.removeItem("isLogin");
     navigate("/login");
@@ -107,7 +111,7 @@ const Footer = () => {
 
   const onHintBtnClick = async () => {
     const result = await confirmComp(`(힌트 페이지가 열립니다)`);
-    return result && handleReset();
+    return result && handleHint();
   };
 
   const displayDate = Array.isArray(date) ? date[0] : date;
