@@ -109,6 +109,7 @@ const MainPage = () => {
 
   const handleReset = async () => {
     localStorage.clear();
+    localStorage.setItem("isLogin", "success");
     navigate("/");
     window.location.reload();
   };

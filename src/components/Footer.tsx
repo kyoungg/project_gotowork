@@ -87,8 +87,14 @@ const Footer = () => {
 
   const handleReset = async () => {
     localStorage.clear();
+    localStorage.setItem("isLogin", "success");
     navigate("/");
     window.location.reload();
+  };
+
+  const onLockBtnClick = () => {
+    localStorage.removeItem("isLogin");
+    navigate("/login");
   };
 
   const onResetBtnClick = async () => {
@@ -147,7 +153,7 @@ const Footer = () => {
         <ResetContainer ref={powerRef}>
           <PowerBtn>
             <MdLockOutline />
-            <BtnText>잠금</BtnText>
+            <BtnText onClick={() => onLockBtnClick()}>잠금</BtnText>
           </PowerBtn>
           <PowerBtn>
             <FaKey />
@@ -262,10 +268,17 @@ const PowerBtn = styled.div`
   width: 100%;
   font-size: 20px;
 
-  cursor: pointer;
+  cursor: default;
+
+  &:hover {
+    background-color: #9fa192;
+    width: 90%;
+
+    cursor: pointer;
+  }
 `;
 
-const BtnText = styled.p`
+const BtnText = styled.div`
   margin-left: 5px;
 `;
 
