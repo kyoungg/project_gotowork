@@ -3,12 +3,26 @@ import { useNavigate } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 import AlertContext from "../../components/alert/alertContext";
 import { useContext, useEffect, useState } from "react";
+import useSound from "use-sound";
 
 const TamraPage = () => {
+  const [play, { stop }] = useSound("/sounds/train2.mp3", {
+    volume: 1,
+    soundEnabled: true,
+  });
+
   const [showBtn, setShowBtn] = useState(false);
   const navigate = useNavigate();
 
   const { alert: alertComp } = useContext(AlertContext);
+
+  useEffect(() => {
+    play(); // 페이지 로드 시 자동 재생
+
+    return () => {
+      stop();
+    };
+  }, [play, stop]);
 
   const onCloseBtnClick = async () => {
     await alertComp(

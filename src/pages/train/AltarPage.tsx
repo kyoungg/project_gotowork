@@ -2,10 +2,24 @@ import { IoMdClose } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 import { useContext, useEffect } from "react";
+import useSound from "use-sound";
 
 import AlertContext from "../../components/alert/alertContext";
 
 const AltarPage = () => {
+  const [play, { stop }] = useSound("/sounds/train3.mp3", {
+    volume: 1,
+    soundEnabled: true,
+  });
+
+  useEffect(() => {
+    play(); // 페이지 로드 시 자동 재생
+
+    return () => {
+      stop();
+    };
+  }, [play, stop]);
+
   const navigate = useNavigate();
 
   const { alert: alertComp } = useContext(AlertContext);

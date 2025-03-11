@@ -397,6 +397,7 @@ const MainPage = () => {
             <PostitText>
               신년 첫 번째 계획: <br /> 1월 2일에 진입할 어둠에서, 무슨 수로
               탈주할지 방법을 찾아내기.
+              <br /> <br /> -&gt; X 5
             </PostitText>
           </PostitContainer>
         </Draggable>
@@ -482,7 +483,7 @@ const PostitText = styled.p`
   top: 5vh;
   right: 4vh;
 
-  font-size: 24px;
+  font-size: 21px;
 
   font-family: "ANDONG264TTF";
 

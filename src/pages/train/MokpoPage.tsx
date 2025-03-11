@@ -2,17 +2,27 @@ import { useContext, useEffect } from "react";
 import { IoMdClose } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
+import useSound from "use-sound";
 
 import AlertContext from "../../components/alert/alertContext";
 
 const MokpoPage = () => {
+  const [play, { stop }] = useSound("/sounds/train1.mp3", {
+    volume: 1,
+    soundEnabled: true,
+  });
+
+  useEffect(() => {
+    play(); // 페이지 로드 시 자동 재생
+
+    return () => {
+      stop();
+    };
+  }, [play, stop]);
+
   const navigate = useNavigate();
 
   const { alert: alertComp } = useContext(AlertContext);
-
-  const onCloseBtnClick = async () => {
-    await alertComp(`내릴 수 없다`);
-  };
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -20,6 +30,10 @@ const MokpoPage = () => {
     }, 16000);
     return () => clearTimeout(timer);
   }, [navigate]);
+
+  const onCloseBtnClick = async () => {
+    await alertComp(`내릴 수 없다`);
+  };
 
   return (
     <Background>
