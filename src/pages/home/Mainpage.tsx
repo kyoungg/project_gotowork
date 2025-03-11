@@ -42,7 +42,10 @@ const MainPage = () => {
   const [isDragging, setIsDragging] = useState(false);
   const nodeRef = useRef(null);
 
-  const bgImage = trickster === "KC" ? "/images/바다.jpg" : undefined;
+  const bgImage =
+    trickster === "KC"
+      ? "https://img.freepik.com/free-photo/beautiful-shot-north-entrance-beach-sunrise_181624-20126.jpg?t=st=1741634235~exp=1741637835~hmac=27824707c9c50244ae83ac0b2b201323f3340adc4a38a282217382717e27c247&w=900"
+      : undefined;
 
   const onWehelpClick = async () => {
     if (isDragging) return;
