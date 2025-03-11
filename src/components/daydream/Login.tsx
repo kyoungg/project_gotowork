@@ -63,6 +63,7 @@ const Title = styled.div`
   margin-right: 25px;
 
   width: 110px;
+  min-width: 110px;
 `;
 
 const InputContainer = styled.div`

@@ -32,6 +32,7 @@ const Footer = () => {
   //착한친구 구현용
   const doll = localStorage.getItem("doll");
   const coin = localStorage.getItem("coin");
+  const friend = localStorage.getItem("friend");
 
   const powerRef = useRef<HTMLDivElement | null>(null);
   const calendarRef = useRef<HTMLDivElement | null>(null);
@@ -174,7 +175,8 @@ const Footer = () => {
           </PowerBtn>
         </ResetContainer>
       )}
-      {doll && coin && <Friend src="/images/착한친구.png" />}
+      {doll && coin && !friend && <Friend src="/images/착한친구.png" />}
+      {friend === "big" && <BigFriend src="/images/큰토끼.png" />}
     </Background>
   );
 };
@@ -190,6 +192,8 @@ const Background = styled.div`
 
   width: 100%;
   height: 6vh;
+
+  position: relative;
 `;
 
 const StartBtn = styled.div`
@@ -347,6 +351,14 @@ const Friend = styled.img`
   position: absolute;
   width: 88px;
 
-  bottom: 1.8%;
+  bottom: 30%;
+  right: 35%;
+`;
+
+const BigFriend = styled.img`
+  position: absolute;
+  width: 280px;
+
+  bottom: 0.4%;
   right: 35%;
 `;
