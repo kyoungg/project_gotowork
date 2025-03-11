@@ -104,6 +104,11 @@ const Footer = () => {
     return result && handleReset();
   };
 
+  const onHintBtnClick = async () => {
+    const result = await confirmComp(`(힌트 페이지가 열립니다)`);
+    return result && handleReset();
+  };
+
   const displayDate = Array.isArray(date) ? date[0] : date;
   const formattedDate = `${displayDate.getFullYear()}-${(
     displayDate.getMonth() + 1
@@ -151,21 +156,21 @@ const Footer = () => {
       </MenuContainer>
       {view && (
         <ResetContainer ref={powerRef}>
-          <PowerBtn>
+          <PowerBtn onClick={() => onLockBtnClick()}>
             <MdLockOutline />
-            <BtnText onClick={() => onLockBtnClick()}>잠금</BtnText>
+            <BtnText>잠금</BtnText>
           </PowerBtn>
-          <PowerBtn>
+          <PowerBtn onClick={() => onHintBtnClick()}>
             <FaKey />
-            <BtnText onClick={() => onEndBtnClick()}>힌트</BtnText>
+            <BtnText>힌트</BtnText>
           </PowerBtn>
           <PowerBtn onClick={() => onEndBtnClick()}>
             <GrPower />
             <BtnText>시스템 종료</BtnText>
           </PowerBtn>
-          <PowerBtn>
+          <PowerBtn onClick={() => onResetBtnClick()}>
             <GrPowerReset />
-            <BtnText onClick={() => onResetBtnClick()}>다시 시작</BtnText>
+            <BtnText>다시 시작</BtnText>
           </PowerBtn>
         </ResetContainer>
       )}
@@ -272,7 +277,7 @@ const PowerBtn = styled.div`
 
   &:hover {
     background-color: #9fa192;
-    width: 90%;
+    width: 92%;
 
     cursor: pointer;
   }

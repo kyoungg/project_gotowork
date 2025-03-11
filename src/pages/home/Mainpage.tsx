@@ -361,7 +361,6 @@ const MainPage = () => {
                   if (isDragging) return;
                   onTrainClick();
                 }}
-                ref={nodeRef}
               >
                 <Img src={"/images/지하철.png"} />
                 <Name>{"목포행"}</Name>
@@ -370,6 +369,22 @@ const MainPage = () => {
           )}
           {quizShow && <></>}
         </IconList>
+        <Draggable
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          nodeRef={nodeRef}
+          onDrag={() => handleOnDrag()}
+          onStop={handleStopDrag}
+          bounds="body"
+        >
+          <PostitContainer ref={nodeRef}>
+            <Postit src="/images/포스트잇.png" />
+            <PostitText>
+              신년 첫 번째 계획: <br /> 1월 2일에 진입할 어둠에서, 무슨 수로
+              탈주할지 방법을 찾아내기.
+            </PostitText>
+          </PostitContainer>
+        </Draggable>
       </Background>
     </>
   );
@@ -381,6 +396,8 @@ const Background = styled.div<BackgroundProps>`
   width: 100%;
   min-height: 94vh;
   background-color: #245c8d;
+
+  position: relative;
 
   ${({ bgImage }) =>
     bgImage && `background: url(${bgImage}) no-repeat center center/cover;`}
@@ -427,4 +444,28 @@ const Name = styled.p`
   margin-top: 2px;
 
   width: 100%;
+`;
+
+const PostitContainer = styled.div`
+  position: absolute;
+
+  top: 1vh;
+  right: 1vh;
+`;
+
+const Postit = styled.img`
+  width: 220px;
+  height: 230px;
+`;
+
+const PostitText = styled.p`
+  position: absolute;
+
+  width: 150px;
+  top: 5vh;
+  right: 4vh;
+
+  font-size: 24px;
+
+  font-family: "ANDONG264TTF";
 `;
