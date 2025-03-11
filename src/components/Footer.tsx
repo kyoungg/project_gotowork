@@ -32,6 +32,7 @@ const Footer = () => {
   //착한친구 구현용
   const doll = localStorage.getItem("doll");
   const coin = localStorage.getItem("coin");
+  const friend = localStorage.getItem("friend");
 
   const powerRef = useRef<HTMLDivElement | null>(null);
   const calendarRef = useRef<HTMLDivElement | null>(null);
@@ -82,17 +83,30 @@ const Footer = () => {
   }, [date]); // date가 변경될 때마다 실행
 
   const onEndBtnClick = async () => {
-    await alertComp(`아직 해야 할 게 있다!`);
+    await alertComp(`해야 할 게 있다!`);
   };
 
   const handleReset = async () => {
     localStorage.clear();
+    localStorage.setItem("isLogin", "success");
     navigate("/");
     window.location.reload();
   };
 
+  const onLockBtnClick = () => {
+    localStorage.removeItem("isLogin");
+    navigate("/login");
+  };
+
   const onResetBtnClick = async () => {
-    const result = await confirmComp(`초기화 할까?\n(정말 초기화 됩니다)`);
+    const result = await confirmComp(
+      `다시 시작 할까?\n(진행 상황이 초기화 됩니다)`
+    );
+    return result && handleReset();
+  };
+
+  const onHintBtnClick = async () => {
+    const result = await confirmComp(`(힌트 페이지가 열립니다)`);
     return result && handleReset();
   };
 
@@ -143,25 +157,26 @@ const Footer = () => {
       </MenuContainer>
       {view && (
         <ResetContainer ref={powerRef}>
-          <PowerBtn>
+          <PowerBtn onClick={() => onLockBtnClick()}>
             <MdLockOutline />
             <BtnText>잠금</BtnText>
           </PowerBtn>
-          <PowerBtn>
+          <PowerBtn onClick={() => onHintBtnClick()}>
             <FaKey />
-            <BtnText onClick={() => onEndBtnClick()}>힌트</BtnText>
+            <BtnText>힌트</BtnText>
           </PowerBtn>
           <PowerBtn onClick={() => onEndBtnClick()}>
             <GrPower />
             <BtnText>시스템 종료</BtnText>
           </PowerBtn>
-          <PowerBtn>
+          <PowerBtn onClick={() => onResetBtnClick()}>
             <GrPowerReset />
-            <BtnText onClick={() => onResetBtnClick()}>초기화</BtnText>
+            <BtnText>다시 시작</BtnText>
           </PowerBtn>
         </ResetContainer>
       )}
-      {doll && coin && <Friend src="/images/착한친구.png" />}
+      {doll && coin && !friend && <Friend src="/images/착한친구.png" />}
+      {friend === "big" && <BigFriend src="/images/큰토끼.png" />}
     </Background>
   );
 };
@@ -177,6 +192,8 @@ const Background = styled.div`
 
   width: 100%;
   height: 6vh;
+
+  position: relative;
 `;
 
 const StartBtn = styled.div`
@@ -260,10 +277,17 @@ const PowerBtn = styled.div`
   width: 100%;
   font-size: 20px;
 
-  cursor: pointer;
+  cursor: default;
+
+  &:hover {
+    background-color: #9fa192;
+    width: 92%;
+
+    cursor: pointer;
+  }
 `;
 
-const BtnText = styled.p`
+const BtnText = styled.div`
   margin-left: 5px;
 `;
 
@@ -327,6 +351,14 @@ const Friend = styled.img`
   position: absolute;
   width: 88px;
 
-  bottom: 1.8%;
+  bottom: 30%;
+  right: 35%;
+`;
+
+const BigFriend = styled.img`
+  position: absolute;
+  width: 280px;
+
+  bottom: 0.4%;
   right: 35%;
 `;

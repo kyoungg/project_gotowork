@@ -10,7 +10,7 @@ const Nav = () => {
   const { alert: alertComp } = useContext(AlertContext);
 
   const onShopClick = async () => {
-    await alertComp(`지금 상점에선 확인 할 게 없다.`);
+    await alertComp(`열리지 않는다. \n점검 중인 것 같다.`);
   };
 
   return (

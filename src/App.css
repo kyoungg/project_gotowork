@@ -51,3 +51,11 @@ img {
   font-weight: 700;
   font-style: normal;
 }
+
+@font-face {
+  font-family: "ANDONG264TTF";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/2502-1@1.0/ANDONG264TTF.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}

@@ -32,6 +32,7 @@ const MainPage = () => {
   //브라운
   const quizShow = localStorage.getItem("quizShow"); //"tuesday"
   const doll = localStorage.getItem("doll"); //"rabbit"
+  const friend = localStorage.getItem("friend"); //"big"
 
   const [play] = useSound("/sounds/Cat Mew 3.mp3");
 
@@ -42,10 +43,7 @@ const MainPage = () => {
   const [isDragging, setIsDragging] = useState(false);
   const nodeRef = useRef(null);
 
-  const bgImage =
-    trickster === "KC"
-      ? "https://img.freepik.com/free-photo/beautiful-shot-north-entrance-beach-sunrise_181624-20126.jpg?t=st=1741634235~exp=1741637835~hmac=27824707c9c50244ae83ac0b2b201323f3340adc4a38a282217382717e27c247&w=900"
-      : undefined;
+  const bgImage = trickster === "KC" ? "/images/바다.jpg" : undefined;
 
   const onWehelpClick = async () => {
     if (isDragging) return;
@@ -75,7 +73,24 @@ const MainPage = () => {
     await alertComp(`스스로 꼬리를 물고 있는 \n뱀의 그림이 새겨져 있다.`);
   };
 
+  const onBrownBathClick = async () => {
+    const result = await confirmComp(`브라운을 욕조에 넣어줄까?`);
+    return result && onBrownBathAfter();
+  };
+
+  const onBrownBathAfter = async () => {
+    localStorage.setItem("friend", "big");
+    await alertComp(`인형이 조금 커진 것 같다.`);
+    window.location.reload();
+  };
+
   const onBathClick = async () => {
+    if (coin === "uroboros" && doll === "rabbit" && !friend) {
+      return onBrownBathClick();
+    }
+    // if (coin === "uroboros" && doll === "rabbit" && friend === "big") {
+    //   return onBrownNoBath();
+    // }
     await alertComp(
       `[젊음의 욕조-풋 마사지 에디션] \n10년 무상 A/S가 가능하다. `
     );
@@ -109,6 +124,7 @@ const MainPage = () => {
 
   const handleReset = async () => {
     localStorage.clear();
+    localStorage.setItem("isLogin", "success");
     navigate("/");
     window.location.reload();
   };
@@ -360,7 +376,6 @@ const MainPage = () => {
                   if (isDragging) return;
                   onTrainClick();
                 }}
-                ref={nodeRef}
               >
                 <Img src={"/images/지하철.png"} />
                 <Name>{"목포행"}</Name>
@@ -369,6 +384,22 @@ const MainPage = () => {
           )}
           {quizShow && <></>}
         </IconList>
+        <Draggable
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          nodeRef={nodeRef}
+          onDrag={() => handleOnDrag()}
+          onStop={handleStopDrag}
+          bounds="body"
+        >
+          <PostitContainer ref={nodeRef}>
+            <Postit src="/images/포스트잇.png" />
+            <PostitText>
+              신년 첫 번째 계획: <br /> 1월 2일에 진입할 어둠에서, 무슨 수로
+              탈주할지 방법을 찾아내기.
+            </PostitText>
+          </PostitContainer>
+        </Draggable>
       </Background>
     </>
   );
@@ -380,6 +411,8 @@ const Background = styled.div<BackgroundProps>`
   width: 100%;
   min-height: 94vh;
   background-color: #245c8d;
+
+  position: relative;
 
   ${({ bgImage }) =>
     bgImage && `background: url(${bgImage}) no-repeat center center/cover;`}
@@ -426,4 +459,32 @@ const Name = styled.p`
   margin-top: 2px;
 
   width: 100%;
+`;
+
+const PostitContainer = styled.div`
+  position: absolute;
+
+  top: 1vh;
+  right: 1vh;
+
+  cursor: default;
+`;
+
+const Postit = styled.img`
+  width: 220px;
+  height: 230px;
+`;
+
+const PostitText = styled.p`
+  position: absolute;
+
+  width: 150px;
+  top: 5vh;
+  right: 4vh;
+
+  font-size: 24px;
+
+  font-family: "ANDONG264TTF";
+
+  cursor: default;
 `;

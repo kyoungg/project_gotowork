@@ -4,6 +4,7 @@ import { IoMdClose } from "react-icons/io";
 import styled from "styled-components";
 
 import AlertContext from "../alert/alertContext";
+import ConfirmContext from "../confirm/confirmContext";
 
 interface FileProps {
   onClose: () => void;
@@ -12,8 +13,14 @@ interface FileProps {
 const EducatuonFile = ({ onClose }: FileProps) => {
   const nodeRef = useRef(null);
   const { alert: alertComp } = useContext(AlertContext);
+  const { confirm: confirmComp } = useContext(ConfirmContext);
 
   const onBtnClick = async () => {
+    const result = await confirmComp(`정말 교육서를 다 읽었나요?`);
+    return result && onYesClick();
+  };
+
+  const onYesClick = async () => {
     const result = await alertComp(`신 규 선 생 님 이 네 !`);
     localStorage.setItem("Qterw-B-191", "hangman");
     return result && window.location.reload();
