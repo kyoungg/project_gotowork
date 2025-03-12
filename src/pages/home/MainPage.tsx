@@ -170,18 +170,19 @@ const MainPage = () => {
 
   const onFoxClick = async () => {
     const result = await alertComp(
-      `내담자님 정말 잘 오셨습니다! \n 가운으로 갈아입고 들어오세요^^`
+      `[내담자님 정말 잘 오셨습니다! \n 가운으로 갈아입고 들어오세요^^]`
     );
     return result && yesFoxClick();
   };
 
   const yesFoxClick = async () => {
-    const result = await confirmComp(`...들어갈까?`);
+    const result = await confirmComp(`... 들어갈까?`);
     return result && removeHangman();
   };
 
-  const removeHangman = () => {
+  const removeHangman = async () => {
     localStorage.removeItem("Qterw-B-191");
+    await confirmComp(`문신 안에 있던 교육서를 꺼냈다!`);
     window.location.reload();
   };
 

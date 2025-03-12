@@ -37,7 +37,7 @@ const EducatuonFile = ({ onClose }: FileProps) => {
         <TopContainer className="top-container">
           <TitleContainer>
             <Icon src={"/images/교육서.png"} />
-            {`교육서 - 메모장`}
+            {`■■부속 유치원 교육서`}
           </TitleContainer>
           <CloseBtn onClick={onClose}>
             <IoMdClose />
@@ -135,6 +135,8 @@ const Icon = styled.img`
 const TitleContainer = styled.div`
   display: flex;
   align-items: center;
+
+  color: #ff0000;
 `;
 
 const TopContainer = styled.div`
