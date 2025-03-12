@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
-import { useContext, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import Draggable from "react-draggable";
 import useSound from "use-sound";
 
@@ -8,14 +7,13 @@ import data from "../../assets/data/icon";
 import ConfirmContext from "../../components/confirm/confirmContext";
 import AlertContext from "../../components/alert/alertContext";
 import MemoContext from "../../components/memo/memoContext";
+import { useNavigate } from "react-router-dom";
 
 interface BackgroundProps {
   bgImage?: string | null;
 }
 
 const MainPage = () => {
-  const navigate = useNavigate();
-
   //우주쇼핑몰
   const weHelp = localStorage.getItem("weHelp"); //우리가 도움! "change"
   const coin = localStorage.getItem("coin"); //은화뱀 "uroboros"
@@ -32,7 +30,12 @@ const MainPage = () => {
   //브라운
   const quizShow = localStorage.getItem("quizShow"); //"tuesday"
   const doll = localStorage.getItem("doll"); //"rabbit"
-  const friend = localStorage.getItem("friend"); //"big"
+  const brawn = localStorage.getItem("brawn"); //브라운 있없
+  const friend = localStorage.getItem("friend"); //크기 조절 "big"
+
+  //작업표시줄
+  // const highSchool = localStorage.getItem("Qterw-()-62");
+  const hangman = localStorage.getItem("Qterw-B-191");
 
   const [play] = useSound("/sounds/Cat Mew 3.mp3");
 
@@ -42,8 +45,26 @@ const MainPage = () => {
 
   const [isDragging, setIsDragging] = useState(false);
   const nodeRef = useRef(null);
-
+  const navigate = useNavigate();
   const bgImage = trickster === "KC" ? "/images/바다.jpg" : undefined;
+
+  useEffect(() => {
+    if (!brawn && coin && doll) {
+      onBrawn();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [brawn, coin, doll]);
+
+  const onBrawn = async () => {
+    await alertComp(
+      `보라! 내가 백만가면의 소유자요, 혼돈의 군주요, 광기의 정점이요, 쾌락과 유희의 꿈이요, 전쟁의 선동자요, 과학의 어버이요, 낮은 네발짐승이요,`
+    );
+    const result = await alertComp(
+      `기는 자의 욕망이요, 별의 군주요, 환상의 심연이요, 지혜의 입이요, 충동의 포효요, 달의 뒷면이요... `
+    );
+    localStorage.setItem("brawn", "isFriend");
+    return result && (await alertComp(`반갑습니다. 내 친구!`));
+  };
 
   const onWehelpClick = async () => {
     if (isDragging) return;
@@ -58,11 +79,7 @@ const MainPage = () => {
 
   const onRealRealhelpClick = async () => {
     const result = await confirmComp(`진짜로?`);
-    return result && onDontClick();
-  };
-
-  const onDontClick = async () => {
-    await alertComp(`지금은 긴급상황이 아니다...`);
+    return result && (await alertComp(`지금은 긴급상황이 아니다...`));
   };
 
   const onNothingClick = async () => {
@@ -148,6 +165,23 @@ const MainPage = () => {
   const onTrainClick = async () => {
     const result = await confirmComp(`목포행 기차다.`);
     return result && navigate("/train/mokpo");
+  };
+
+  const onFoxClick = async () => {
+    const result = await alertComp(
+      `내담자님 정말 잘 오셨습니다! \n 가운으로 갈아입고 들어오세요^^`
+    );
+    return result && yesFoxClick();
+  };
+
+  const yesFoxClick = async () => {
+    const result = await confirmComp(`...들어갈까?`);
+    return result && removeHangman();
+  };
+
+  const removeHangman = () => {
+    localStorage.removeItem("Qterw-B-191");
+    window.location.reload();
   };
 
   const handleStopDrag = () => {
@@ -384,6 +418,18 @@ const MainPage = () => {
           )}
           {quizShow && <></>}
         </IconList>
+        {/* {highSchool && (
+          <Draggable
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            nodeRef={nodeRef}
+            onDrag={() => handleOnDrag()}
+            onStop={handleStopDrag}
+            bounds="body"
+          >
+            <Tomato src="/images/토마토.png" />
+          </Draggable>
+        )} */}
         <Draggable
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore
@@ -401,6 +447,27 @@ const MainPage = () => {
             </PostitText>
           </PostitContainer>
         </Draggable>
+        {hangman && (
+          <Draggable
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            nodeRef={nodeRef}
+            onDrag={() => handleOnDrag()}
+            onStop={handleStopDrag}
+            bounds="body"
+          >
+            <FoxContainer
+              ref={nodeRef}
+              onClick={() => {
+                if (isDragging) return;
+                onFoxClick();
+              }}
+            >
+              <FoxTitle src="/images/명패.png" />
+              <FoxText>여우 상담실</FoxText>
+            </FoxContainer>
+          </Draggable>
+        )}
       </Background>
     </>
   );
@@ -488,4 +555,46 @@ const PostitText = styled.p`
   font-family: "ANDONG264TTF";
 
   cursor: default;
+
+  z-index: 990;
 `;
+
+const FoxContainer = styled.div`
+  position: absolute;
+
+  top: 1vh;
+  right: 30vh;
+
+  cursor: default;
+`;
+
+const FoxTitle = styled.img`
+  width: 260px;
+  height: 80px;
+`;
+
+const FoxText = styled.p`
+  position: absolute;
+
+  width: 150px;
+  top: 3.3vh;
+  right: 4.8vh;
+
+  font-family: "KimjungchulMyungjo-Bold";
+  font-size: 28px;
+
+  cursor: default;
+`;
+
+// const Tomato = styled.img`
+//   position: absolute;
+
+//   width: 55px;
+
+//   top: 1vh;
+//   right: 1vh;
+
+//   cursor: default;
+
+//   z-index: 800;
+// `;
