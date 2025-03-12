@@ -9,7 +9,7 @@ import TipFile from "../../components/waste/TipFile";
 
 const WastePage = () => {
   const [selectedFile, setSelectedFile] = useState<
-    "교육서" | "검은 그늘 속에서" | "야간청소근무팁" | null
+    "■■부속 유치원" | "검은 그늘 속에서" | "야간청소근무팁" | null
   >(null);
   const navigate = useNavigate();
 
@@ -34,13 +34,15 @@ const WastePage = () => {
       </TopContainer>
       <MiddleContainer></MiddleContainer>
       <BottomContainer>
-        <Icon onClick={() => setSelectedFile("교육서")}>
+        <Icon onClick={() => setSelectedFile("■■부속 유치원")}>
           <Img src={"/images/교육서.png"} />
           <Name>
-            <p>{"교육서"}</p>
+            <p>{"■■부속 유치원···"}</p>
           </Name>
         </Icon>
-        {selectedFile === "교육서" && <EducatuonFile onClose={handleClose} />}
+        {selectedFile === "■■부속 유치원" && (
+          <EducatuonFile onClose={handleClose} />
+        )}
 
         <Icon onClick={() => setSelectedFile("검은 그늘 속에서")}>
           <Img src={"/images/txt.png"} />
@@ -172,6 +174,7 @@ const Name = styled.div`
 
   & p {
     font-size: 18px;
-    font-family: "HakgyoansimDunggeunmisoTTF-B";
+    font-family: "HakgyoansimDunggeunmisoTTF-R";
+    color: #ff0000;
   }
 `;

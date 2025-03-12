@@ -102,12 +102,13 @@ const MainPage = () => {
   };
 
   const onBathClick = async () => {
-    if (coin === "uroboros" && doll === "rabbit" && !friend) {
+    if (brawn && !friend) {
       return onBrownBathClick();
     }
-    // if (coin === "uroboros" && doll === "rabbit" && friend === "big") {
-    //   return onBrownNoBath();
-    // }
+    if (friend === "big") {
+      const result = await alertComp(`브라운을 또 욕조에 넣어줄까?`);
+      return result && (await alertComp(`..별로 좋은 생각이 아닌 것 같다.`));
+    }
     await alertComp(
       `[젊음의 욕조-풋 마사지 에디션] \n10년 무상 A/S가 가능하다. `
     );
@@ -169,18 +170,19 @@ const MainPage = () => {
 
   const onFoxClick = async () => {
     const result = await alertComp(
-      `내담자님 정말 잘 오셨습니다! \n 가운으로 갈아입고 들어오세요^^`
+      `[내담자님 정말 잘 오셨습니다! \n 가운으로 갈아입고 들어오세요^^]`
     );
     return result && yesFoxClick();
   };
 
   const yesFoxClick = async () => {
-    const result = await confirmComp(`...들어갈까?`);
+    const result = await confirmComp(`... 들어갈까?`);
     return result && removeHangman();
   };
 
-  const removeHangman = () => {
+  const removeHangman = async () => {
     localStorage.removeItem("Qterw-B-191");
+    await confirmComp(`문신 안에 있던 교육서를 꺼냈다!`);
     window.location.reload();
   };
 
@@ -436,7 +438,7 @@ const MainPage = () => {
           nodeRef={nodeRef}
           onDrag={() => handleOnDrag()}
           onStop={handleStopDrag}
-          bounds="body"
+          bounds={hangman ? { right: 0, top: 0 } : "body"}
         >
           <PostitContainer ref={nodeRef}>
             <Postit src="/images/포스트잇.png" />
@@ -448,25 +450,16 @@ const MainPage = () => {
           </PostitContainer>
         </Draggable>
         {hangman && (
-          <Draggable
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
-            nodeRef={nodeRef}
-            onDrag={() => handleOnDrag()}
-            onStop={handleStopDrag}
-            bounds="body"
+          <FoxContainer
+            ref={nodeRef}
+            onClick={() => {
+              if (isDragging) return;
+              onFoxClick();
+            }}
           >
-            <FoxContainer
-              ref={nodeRef}
-              onClick={() => {
-                if (isDragging) return;
-                onFoxClick();
-              }}
-            >
-              <FoxTitle src="/images/명패.png" />
-              <FoxText>여우 상담실</FoxText>
-            </FoxContainer>
-          </Draggable>
+            <FoxTitle src="/images/명패.png" />
+            <FoxText>여우 상담실</FoxText>
+          </FoxContainer>
         )}
       </Background>
     </>
@@ -562,7 +555,7 @@ const PostitText = styled.p`
 const FoxContainer = styled.div`
   position: absolute;
 
-  top: 1vh;
+  top: 0vh;
   right: 30vh;
 
   cursor: default;
@@ -577,7 +570,7 @@ const FoxText = styled.p`
   position: absolute;
 
   width: 150px;
-  top: 3.3vh;
+  top: 4.5vh;
   right: 4.8vh;
 
   font-family: "KimjungchulMyungjo-Bold";
