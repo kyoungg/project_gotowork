@@ -436,7 +436,7 @@ const MainPage = () => {
           nodeRef={nodeRef}
           onDrag={() => handleOnDrag()}
           onStop={handleStopDrag}
-          bounds="body"
+          bounds={hangman ? { right: 0, top: 0 } : "body"}
         >
           <PostitContainer ref={nodeRef}>
             <Postit src="/images/포스트잇.png" />
@@ -448,25 +448,16 @@ const MainPage = () => {
           </PostitContainer>
         </Draggable>
         {hangman && (
-          <Draggable
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
-            nodeRef={nodeRef}
-            onDrag={() => handleOnDrag()}
-            onStop={handleStopDrag}
-            bounds="body"
+          <FoxContainer
+            ref={nodeRef}
+            onClick={() => {
+              if (isDragging) return;
+              onFoxClick();
+            }}
           >
-            <FoxContainer
-              ref={nodeRef}
-              onClick={() => {
-                if (isDragging) return;
-                onFoxClick();
-              }}
-            >
-              <FoxTitle src="/images/명패.png" />
-              <FoxText>여우 상담실</FoxText>
-            </FoxContainer>
-          </Draggable>
+            <FoxTitle src="/images/명패.png" />
+            <FoxText>여우 상담실</FoxText>
+          </FoxContainer>
         )}
       </Background>
     </>
@@ -562,7 +553,7 @@ const PostitText = styled.p`
 const FoxContainer = styled.div`
   position: absolute;
 
-  top: 1vh;
+  top: 0vh;
   right: 30vh;
 
   cursor: default;
@@ -577,7 +568,7 @@ const FoxText = styled.p`
   position: absolute;
 
   width: 150px;
-  top: 3.3vh;
+  top: 4.5vh;
   right: 4.8vh;
 
   font-family: "KimjungchulMyungjo-Bold";
