@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import { useContext, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import Draggable from "react-draggable";
 import useSound from "use-sound";
 
@@ -32,7 +32,8 @@ const MainPage = () => {
   //브라운
   const quizShow = localStorage.getItem("quizShow"); //"tuesday"
   const doll = localStorage.getItem("doll"); //"rabbit"
-  const friend = localStorage.getItem("friend"); //"big"
+  const brawn = localStorage.getItem("brawn"); //브라운 있없
+  const friend = localStorage.getItem("friend"); //크기 조절 "big"
 
   const [play] = useSound("/sounds/Cat Mew 3.mp3");
 
@@ -44,6 +45,24 @@ const MainPage = () => {
   const nodeRef = useRef(null);
 
   const bgImage = trickster === "KC" ? "/images/바다.jpg" : undefined;
+
+  useEffect(() => {
+    if (!brawn && coin && doll) {
+      onBrawn();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [brawn, coin, doll]);
+
+  const onBrawn = async () => {
+    await alertComp(
+      `보라! 내가 백만가면의 소유자요, 혼돈의 군주요, 광기의 정점이요, 쾌락과 유희의 꿈이요, 전쟁의 선동자요, 과학의 어버이요, 낮은 네발짐승이요,`
+    );
+    const result = await alertComp(
+      `기는 자의 욕망이요, 별의 군주요, 환상의 심연이요, 지혜의 입이요, 충동의 포효요, 달의 뒷면이요... `
+    );
+    localStorage.setItem("brawn", "isFriend");
+    return result && (await alertComp(`반갑습니다. 내 친구!`));
+  };
 
   const onWehelpClick = async () => {
     if (isDragging) return;
@@ -58,11 +77,7 @@ const MainPage = () => {
 
   const onRealRealhelpClick = async () => {
     const result = await confirmComp(`진짜로?`);
-    return result && onDontClick();
-  };
-
-  const onDontClick = async () => {
-    await alertComp(`지금은 긴급상황이 아니다...`);
+    return result && (await alertComp(`지금은 긴급상황이 아니다...`));
   };
 
   const onNothingClick = async () => {

@@ -30,9 +30,10 @@ const Footer = () => {
   const quizShow = localStorage.getItem("quizShow");
 
   //착한친구 구현용
-  const doll = localStorage.getItem("doll");
-  const coin = localStorage.getItem("coin");
-  const friend = localStorage.getItem("friend");
+  // const doll = localStorage.getItem("doll");
+  // const coin = localStorage.getItem("coin");
+  const brawn = localStorage.getItem("brawn"); //브라운 있없
+  const friend = localStorage.getItem("friend"); //크기 조절 "big"
 
   const powerRef = useRef<HTMLDivElement | null>(null);
   const calendarRef = useRef<HTMLDivElement | null>(null);
@@ -179,7 +180,7 @@ const Footer = () => {
           </PowerBtn>
         </ResetContainer>
       )}
-      {doll && coin && !friend && <Friend src="/images/착한친구.png" />}
+      {brawn && !friend && <Friend src="/images/착한친구.png" />}
       {friend === "big" && <BigFriend src="/images/큰토끼.png" />}
     </Background>
   );
