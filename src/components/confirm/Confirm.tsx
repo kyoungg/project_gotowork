@@ -46,8 +46,8 @@ export default Confirm;
 const Container = styled.div`
   position: absolute;
 
-  top: 10%;
-  right: 30%;
+  top: 25%;
+  right: 25%;
 
   width: 445px;
   height: 230px;

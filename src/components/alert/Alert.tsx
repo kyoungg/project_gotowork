@@ -45,8 +45,8 @@ export default Alert;
 const Container = styled.div`
   position: absolute;
 
-  top: 7%;
-  right: 27%;
+  top: 30%;
+  right: 30%;
 
   width: 445px;
   height: 230px;
