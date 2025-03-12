@@ -102,12 +102,13 @@ const MainPage = () => {
   };
 
   const onBathClick = async () => {
-    if (coin === "uroboros" && doll === "rabbit" && !friend) {
+    if (brawn && !friend) {
       return onBrownBathClick();
     }
-    // if (coin === "uroboros" && doll === "rabbit" && friend === "big") {
-    //   return onBrownNoBath();
-    // }
+    if (friend === "big") {
+      const result = await alertComp(`브라운을 또 욕조에 넣어줄까?`);
+      return result && (await alertComp(`..별로 좋은 생각이 아닌 것 같다.`));
+    }
     await alertComp(
       `[젊음의 욕조-풋 마사지 에디션] \n10년 무상 A/S가 가능하다. `
     );
