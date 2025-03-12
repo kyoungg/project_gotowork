@@ -309,6 +309,7 @@ const CalendarWrapper = styled.div`
   align-items: center;
 
   width: 1px;
+  z-index: 999;
 `;
 
 // Calendar에 대한 스타일 적용
@@ -357,7 +358,7 @@ const Friend = styled.img`
   width: 88px;
 
   bottom: 30%;
-  right: 35%;
+  right: 25%;
 `;
 
 const BigFriend = styled.img`
@@ -365,5 +366,5 @@ const BigFriend = styled.img`
   width: 280px;
 
   bottom: 0.4%;
-  right: 35%;
+  right: 15%;
 `;
