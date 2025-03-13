@@ -18,7 +18,7 @@ const MainLoginPage = () => {
   };
 
   const handleSubmit = () => {
-    if (password === "백일몽") {
+    if (password === "dmstlawkd") {
       localStorage.setItem("isLogin", "success");
       navigate("/");
     } else onFail();
@@ -40,7 +40,7 @@ const MainLoginPage = () => {
       </InputContainer>
       <HintContainer onClick={() => setHint(!hint)}>
         {hint || <p>암호를 잊으셨나요?</p>}
-        {hint && <span>힌트 : □□□주식회사 </span>}
+        {hint && <span>힌트 : 인성 인증배지</span>}
       </HintContainer>
     </Background>
   );
