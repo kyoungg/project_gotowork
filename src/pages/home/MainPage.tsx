@@ -63,7 +63,7 @@ const MainPage = () => {
       `기는 자의 욕망이요, 별의 군주요, 환상의 심연이요, 지혜의 입이요, 충동의 포효요, 달의 뒷면이요... `
     );
     localStorage.setItem("brawn", "isFriend");
-    return result && (await alertComp(`반갑습니다. 내 친구!`));
+    return result && (await alertComp(`[반갑습니다. 내 친구!]`));
   };
 
   const onWehelpClick = async () => {
@@ -164,7 +164,12 @@ const MainPage = () => {
   };
 
   const onTrainClick = async () => {
-    const result = await confirmComp(`목포행 기차다.`);
+    const result = await alertComp(`[목포행] 기차다.`);
+    return result && onTrainNextClick();
+  };
+
+  const onTrainNextClick = async () => {
+    const result = await confirmComp(`탑승할까?`);
     return result && navigate("/train/mokpo");
   };
 
@@ -570,8 +575,8 @@ const FoxText = styled.p`
   position: absolute;
 
   width: 150px;
-  top: 4.5vh;
-  right: 4.8vh;
+  top: 4.3vh;
+  right: 5vh;
 
   font-family: "KimjungchulMyungjo-Bold";
   font-size: 28px;
